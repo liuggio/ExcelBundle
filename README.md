@@ -5,19 +5,19 @@ This Bundle permit to create easly Excel object.
 ## INSTALLATION
 
 1. Add the following entry to ``deps`` the run ``php bin/vendors install``.
-
-    [n3bStreamresponse]
-        git=https://github.com/liuggio/Symfony2-StreamResponse.git
+``` 
+[n3bStreamresponse]
+    git=https://github.com/liuggio/Symfony2-StreamResponse.git
 	target=n3b/src/n3b/Bundle/Util/HttpFoundation/
 
-    [phpExcel]
-        git=https://github.com/liuggio/PHPExcel.git
+[phpExcel]
+    git=https://github.com/liuggio/PHPExcel.git
 	target=phpexcel/lib/
 
-    [liuggioExcelBundle]
-        git=http://github.com/liuggio/ExcelBundle.git
-        target=/bundles/liuggio/ExcelBundle
-
+[liuggioExcelBundle]
+    git=http://github.com/liuggio/ExcelBundle.git
+    target=/bundles/liuggio/ExcelBundle
+```
 
 2. Register the bundle in ``app/AppKernel.php``
 
