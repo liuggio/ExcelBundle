@@ -1,6 +1,23 @@
 Symfony2 Excel bundle
 ============
 This Bundle permits to create easly Excel object.
+This is just a dependency injection that links
+
+3 Objects:
+
+The container in this bundle, 
+
+The StreamWrapper in the n3bStreamresponse
+
+and a Writer.
+ 
+You could create your own writer extending  ``n3b\Bundle\Util\HttpFoundation\StreamResponse\StreamWriterInterface``
+
+or you could use the Huge Xls library called PHPExcel.
+
+With PHPExcel you can create: xls, ods, pdf and more.
+
+
 
 ## INSTALLATION
 
