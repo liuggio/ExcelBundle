@@ -5,7 +5,8 @@ This Bundle permit to create easly Excel object.
 ## INSTALLATION
 
 1. Add the following entry to ``deps`` the run ``php bin/vendors install``.
-``` 
+
+``` yaml 
 [n3bStreamresponse]
     git=https://github.com/liuggio/Symfony2-StreamResponse.git
 	target=n3b/src/n3b/Bundle/Util/HttpFoundation/
