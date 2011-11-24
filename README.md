@@ -1,6 +1,6 @@
 Symfony2 Excel bundle
 ============
-This Bundle permit to create easly Excel object.
+This Bundle permits to create easly Excel object.
 
 ## INSTALLATION
 
