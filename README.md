@@ -4,7 +4,7 @@ This Bundle permit to create easly Excel object.
 
 ## INSTALLATION
 
-1. Add the following entry to ``deps`` the run ``php bin/vendors install``.
+1 Add the following entry to ``deps`` the run ``php bin/vendors install``.
 
 ``` yaml 
 [n3bStreamresponse]
@@ -20,7 +20,7 @@ This Bundle permit to create easly Excel object.
     target=/bundles/liuggio/ExcelBundle
 ```
 
-2. Register the bundle in ``app/AppKernel.php``
+2 Register the bundle in ``app/AppKernel.php``
 
 ``` php
     $bundles = array(
@@ -29,7 +29,7 @@ This Bundle permit to create easly Excel object.
     );
 ```
 
-3. Register namespace in ``app/autoload.php``
+3  Register namespace in ``app/autoload.php``
 
 ``` php
     $loader->registerNamespaces(array(
@@ -39,7 +39,7 @@ This Bundle permit to create easly Excel object.
 ```
 
 
-4. Register the prefix for the library
+4  Register the prefix for the library
 
 ``` php
      $loader->registerPrefixes(array(
@@ -67,7 +67,7 @@ class DefaultController extends Controller
     
     public function indexAction($name)
     {
-        // ask the service
+        // ask the service for a Excel5
         $xls_service =  $this->get('xls.service_xls5');
 
         // create the object see http://phpexcel.codeplex.com documentation
@@ -80,15 +80,7 @@ class DefaultController extends Controller
                              ->setCategory("Test result file");
         $xls_service->excelObj->setActiveSheetIndex(0)
                     ->setCellValue('A1', 'Hello')
-                    ->setCellValue('B2', 'world!')
-                    ->setCellValue('C1', 'Hello')
-                    ->setCellValue('D2', 'world!');
-        // Miscellaneous glyphs, UTF-8
-        $xls_service->excelObj->setActiveSheetIndex(0)
-                    ->setCellValue('A4', 'Miscellaneous glyphs')
-                    ->setCellValue('A5', 'éàèùâêîôûëïüÿäöüç');
-        // Rename sheet
-        //echo date('H:i:s') . " Rename sheet\n";
+                    ->setCellValue('B2', 'world!');
         $xls_service->excelObj->getActiveSheet()->setTitle('Simple');
         // Set active sheet index to the first sheet, so Excel opens this as the first sheet
         $xls_service->excelObj->setActiveSheetIndex(0);
@@ -102,6 +94,11 @@ class DefaultController extends Controller
 }
 
 ```
+## ADVANCED USE
+
+see and modify ``liuggio\ExcelBundle\Resources\config\services.yml``
+
+
 
 
 ## TEST
