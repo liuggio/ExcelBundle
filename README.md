@@ -51,6 +51,8 @@ With PHPExcel you can create: xls, ods, pdf and more.
 ``` php
     $loader->registerNamespaces(array(
          // ...
+         'n3b\\Bundle\\Util\\HttpFoundation\\StreamResponse'  => __DIR__.'/../vendor/n3b/src',
+         
          'liuggio'              => __DIR__.'/../vendor/bundles',
      ));
 ```
