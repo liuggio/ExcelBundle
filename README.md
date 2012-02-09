@@ -26,7 +26,7 @@ With PHPExcel you can create: xls, ods, pdf and more.
 ``` yaml 
 [n3bStreamresponse]
     git=https://github.com/liuggio/Symfony2-StreamResponse.git
-	target=n3b/src/n3b/Bundle/Util/HttpFoundation/
+	target=n3b/src/n3b/Bundle/Util/HttpFoundation/StreamResponse
 
 [phpExcel]
     git=https://github.com/liuggio/PHPExcel.git
