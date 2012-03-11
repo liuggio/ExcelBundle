@@ -30,7 +30,7 @@ With PHPExcel you can create: xls, ods, pdf and more.
 
 [phpExcel]
     git=https://github.com/liuggio/PHPExcel.git
-	target=phpexcel/lib/
+	target=phpexcel
 
 [liuggioExcelBundle]
     git=http://github.com/liuggio/ExcelBundle.git
