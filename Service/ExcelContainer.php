@@ -23,8 +23,7 @@ class ExcelContainer
         $this->stream_writer = $stream_writer;
         $this->file_type = $file_type;
         $this->response_class = $response_class;
-        $actory_class= $this->factory_class;
-         
+             
     }
 
     /**
