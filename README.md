@@ -107,7 +107,11 @@ class DefaultController extends Controller
         //create the response
         $response = $xls_service->getResponse();
         $response->headers->set('Content-Type', 'text/vnd.ms-excel; charset=utf-8');
-        $response->headers->set('Content-Disposition', 'attachment;filename=stdream2.xls');        
+        $response->headers->set('Content-Disposition', 'attachment;filename=stdream2.xls');
+        
+        // If you are using a https connection, you have to set those two headers for compatibility with IE <9
+        $response->headers->set('Pragma', 'public');
+        $response->headers->set('Cache-Control', 'maxage=1');
         return $response;        
     }
 }
