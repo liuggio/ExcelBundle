@@ -92,10 +92,10 @@ class DefaultController extends Controller
         // create the object see http://phpexcel.codeplex.com documentation
         $xls_service->excelObj->getProperties()->setCreator("Maarten Balliauw")
                             ->setLastModifiedBy("Maarten Balliauw")
-                            ->setTitle("Office 2007 XLSX Test Document")
-                            ->setSubject("Office 2007 XLSX Test Document")
-                            ->setDescription("Test document for Office 2007 XLSX, generated using PHP classes.")
-                            ->setKeywords("office 2007 openxml php")
+                            ->setTitle("Office 2005 XLSX Test Document")
+                            ->setSubject("Office 2005 XLSX Test Document")
+                            ->setDescription("Test document for Office 2005 XLSX, generated using PHP classes.")
+                            ->setKeywords("office 2005 openxml php")
                             ->setCategory("Test result file");
         $xls_service->excelObj->setActiveSheetIndex(0)
                     ->setCellValue('A1', 'Hello')
