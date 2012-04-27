@@ -11,21 +11,25 @@ parameters:
 services:
     xls.phpexcel:
         class: %xls.phpexcel.class%
-    xls.response:
-         class: %xls.stream_response.class%
-    xls.stream_writer_output:
-        class: %xls.stream_writer.class%
-        argument: "php://output"
+
 #factory for xls5
     xls.factory_xls5:
         class: %xls.factory5.method%
         factory_class: %xls.factory.class%
         factory_method: createWriter
         arguments: [@xls.phpexcel, "Excel5"]
+#setter injection
+    xls.stream_writer_output_xls5:
+        class: %xls.stream_writer.class%
+        argument: "php://output"
+        calls:
+            - [ setWriter, [  @xls.factory_xls5, %xls.factory.write_method% ] ]
+
 #service to call
     xls.service_xls5:
         class: %xls.service.class%
-        arguments: [@xls.phpexcel, @xls.factory_xls5, %xls.factory.write_method%, @xls.stream_writer_output, %xls.stream_response.class%]
+        arguments: [@xls.phpexcel, @xls.stream_writer_output_xls5, %xls.stream_response.class%]
+
 # if you need to create another PHP object
 #factory for another format
     xls.factory_pdf:
@@ -33,7 +37,13 @@ services:
         factory_class: %xls.factory.class%
         factory_method: createWriter
         arguments: [@xls.phpexcel, "PDF"]
+#setter injection
+    xls.stream_writer_output_PDF:
+        class: %xls.stream_writer.class%
+        argument: "php://output"
+        calls:
+            - [ setWriter, [  @xls.factory_pdf, %xls.factory.write_method% ] ]
 #service to call
     xls.service_pdf:
         class: %xls.service.class%
-        arguments: [@xls.phpexcel, @xls.factory_pdf, %xls.factory.write_method%, @xls.stream_writer_output, %xls.stream_response.class%]
+        arguments: [@xls.phpexcel, @xls.stream_writer_output_PDF, %xls.stream_response.class%]
