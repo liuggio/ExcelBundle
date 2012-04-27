@@ -120,6 +120,13 @@ class DefaultController extends Controller
 
 ```
 
+If you want read xls if your controller:
+
+``` php
+    $exelObj = $this->get('xls.load_xls5')->load($filename);
+
+```
+
 
 ## ADVANCED USE
 
