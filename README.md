@@ -5,15 +5,14 @@ This is just a dependency injection that links
 
 3 Objects:
 
-The container in this bundle, 
+- The container in this bundle, 
 
-The StreamWrapper in the n3bStreamresponse
+- The StreamWrapper in the n3bStreamresponse
 
-and a Writer.
+- A Writer.
  
-You could create your own writer extending  ``n3b\Bundle\Util\HttpFoundation\StreamResponse\StreamWriterInterface``
 
-or you could use the Huge Xls library called PHPExcel.
+You could create your own writer extending  ``n3b\Bundle\Util\HttpFoundation\StreamResponse\StreamWriterInterface`` or you could use the Huge Xls library called PHPExcel.
 
 With PHPExcel you can create: xls, ods, pdf and more.
 
