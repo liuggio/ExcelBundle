@@ -18,6 +18,16 @@ services:
         factory_class: %xls.factory.class%
         factory_method: createWriter
         arguments: [@xls.phpexcel, "Excel5"]
+        
+#reader for xls5
+    xls.load_xls5:
+        class: %xls.factory5.method%
+        factory_class: %xls.factory.class%
+        factory_method: createReader
+        arguments: ["Excel5"]        
+        
+
+        
 #setter injection
     xls.stream_writer_output_xls5:
         class: %xls.stream_writer.class%
@@ -29,6 +39,7 @@ services:
     xls.service_xls5:
         class: %xls.service.class%
         arguments: [@xls.phpexcel, @xls.stream_writer_output_xls5, %xls.stream_response.class%]
+        
 
 # if you need to create another PHP object
 #factory for another format
