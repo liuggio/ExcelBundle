@@ -48,7 +48,7 @@ class ExcelContainer
 
     }
 
-    
+
 
     /**
      * This function populate the StreamWriter

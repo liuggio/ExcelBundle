@@ -87,6 +87,9 @@ class DefaultController extends Controller
     {
         // ask the service for a Excel5
         $xls_service =  $this->get('xls.service_xls5');
+        // or $this->get('xls.service_pdf');
+        // or create your own is easy just modify services.yml
+
 
         // create the object see http://phpexcel.codeplex.com documentation
         $xls_service->excelObj->getProperties()->setCreator("Maarten Balliauw")
