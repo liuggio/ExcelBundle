@@ -119,16 +119,12 @@ class DefaultController extends Controller
 }
 
 ```
+
+
 ## ADVANCED USE
 
-if you need PDF, or XLS7 see and modify ``liuggio\ExcelBundle\Resources\config\services.yml`` 
+if you need PDF, or XLSX see and modify ``liuggio\ExcelBundle\Resources\config\services.yml``
 
-
-
-
-
-
-## TEST
 
 
 
