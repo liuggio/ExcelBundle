@@ -26,11 +26,11 @@ With PHPExcel you can create: xls, ods, pdf and more.
 ``` yaml 
 [n3bStreamresponse]
     git=https://github.com/liuggio/Symfony2-StreamResponse.git
-	target=n3b/src/n3b/Bundle/Util/HttpFoundation/StreamResponse
+    target=n3b/src/n3b/Bundle/Util/HttpFoundation/StreamResponse
 
 [phpExcel]
     git=https://github.com/liuggio/PHPExcel.git
-	target=phpexcel
+    target=phpexcel
 
 [liuggioExcelBundle]
     git=http://github.com/liuggio/ExcelBundle.git
@@ -91,12 +91,12 @@ class DefaultController extends Controller
 
         // create the object see http://phpexcel.codeplex.com documentation
         $xls_service->excelObj->getProperties()->setCreator("Maarten Balliauw")
-                             ->setLastModifiedBy("Maarten Balliauw")
-                             ->setTitle("Office 2007 XLSX Test Document")
-                             ->setSubject("Office 2007 XLSX Test Document")
-                             ->setDescription("Test document for Office 2007 XLSX, generated using PHP classes.")
-                             ->setKeywords("office 2007 openxml php")
-                             ->setCategory("Test result file");
+                            ->setLastModifiedBy("Maarten Balliauw")
+                            ->setTitle("Office 2007 XLSX Test Document")
+                            ->setSubject("Office 2007 XLSX Test Document")
+                            ->setDescription("Test document for Office 2007 XLSX, generated using PHP classes.")
+                            ->setKeywords("office 2007 openxml php")
+                            ->setCategory("Test result file");
         $xls_service->excelObj->setActiveSheetIndex(0)
                     ->setCellValue('A1', 'Hello')
                     ->setCellValue('B2', 'world!');
