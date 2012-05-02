@@ -12,15 +12,16 @@ class ExcelContainer
      * @var
      */
     public $excelObj;
+
     /**
      * @var
      */
     protected $stream_writer;
+
     /**
      * @var
      */
     protected $response_service;
-
 
     /**
      * @param $excelObj
@@ -29,20 +30,19 @@ class ExcelContainer
      * @param $stream_writer
      * @param $response_service
      */
-
     public function __construct($excelObj, $stream_writer, $response_service)
     {
         $this->setExcelObj($excelObj);
         $this->setStreamWriter($stream_writer);
         $this->setResponseService($response_service);
-
     }
 
     /*
-    *  create the response with the file content
-    *
-    * @return \Symfony\Component\HttpFoundation\Response
-    */
+     *  create the response with the file content
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+
     public function getResponse()
     {
         $responsiveClass = $this->getResponseService();
@@ -70,8 +70,6 @@ class ExcelContainer
     {
         return $this->excelObj;
     }
-
-
 
     /**
      * @param  $response_service
@@ -104,6 +102,5 @@ class ExcelContainer
     {
         return $this->stream_writer;
     }
-
 
 }
