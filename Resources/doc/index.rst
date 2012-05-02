@@ -5,12 +5,12 @@ This is just a dependency injection that links
 
 3 Objects:
 
-- The container in this bundle,
+- The container in this bundle, 
 
 - The StreamWrapper in the n3bStreamresponse
 
 - A Writer.
-
+ 
 
 You could create your own writer extending  ``n3b\Bundle\Util\HttpFoundation\StreamResponse\StreamWriterInterface`` or you could use the Huge Xls library called PHPExcel.
 
@@ -22,7 +22,7 @@ With PHPExcel you can create: xls, ods, pdf and more.
 
 1 Add the following entry to ``deps`` the run ``php bin/vendors install``.
 
-``` yaml
+``` yaml 
 [n3bStreamresponse]
     git=https://github.com/liuggio/Symfony2-StreamResponse.git
     target=n3b/src/n3b/Bundle/Util/HttpFoundation/StreamResponse
@@ -51,7 +51,7 @@ With PHPExcel you can create: xls, ods, pdf and more.
     $loader->registerNamespaces(array(
          // ...
          'n3b\\Bundle\\Util\\HttpFoundation\\StreamResponse'  => __DIR__.'/../vendor/n3b/src',
-
+         
          'liuggio'              => __DIR__.'/../vendor/bundles',
      ));
 ```
@@ -68,6 +68,33 @@ With PHPExcel you can create: xls, ods, pdf and more.
      ));
 ```
 
+
+
+## AVAILABLE SERVICES
+
+If you want write
+
+``` php
+   // create MS Excel5
+   $xls_service =  $this->get('xls.service_xls5');
+   // create pdf
+   $this->get('xls.service_pdf');
+   // create MS Excel 2007
+   $this->get('xls.service_xls2007');
+
+```
+
+
+If you want read xls
+
+``` php
+    $exelObj = $this->get('xls.load_xls5')->load($filename);
+
+```
+
+
+
+
 ## USAGE
 
 create a controller in your bundle
@@ -82,7 +109,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
-
+    
     public function indexAction($name)
     {
         // ask the service for a Excel5
@@ -105,23 +132,31 @@ class DefaultController extends Controller
         $xls_service->excelObj->getActiveSheet()->setTitle('Simple');
         // Set active sheet index to the first sheet, so Excel opens this as the first sheet
         $xls_service->excelObj->setActiveSheetIndex(0);
-
+ 
         //create the response
         $response = $xls_service->getResponse();
         $response->headers->set('Content-Type', 'text/vnd.ms-excel; charset=utf-8');
         $response->headers->set('Content-Disposition', 'attachment;filename=stdream2.xls');
-
+        
         // If you are using a https connection, you have to set those two headers for compatibility with IE <9
         $response->headers->set('Pragma', 'public');
         $response->headers->set('Cache-Control', 'maxage=1');
-        return $response;
+        return $response;        
     }
 }
 
 ```
+
+
+
+
 ## ADVANCED USE
 
-if you need PDF, or XLS7 see and modify ``liuggio\ExcelBundle\Resources\config\services.yml``
+if you need see and modify ``liuggio\ExcelBundle\Resources\config\services.yml``
+
+
+
+
 
 
 

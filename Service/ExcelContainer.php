@@ -24,9 +24,9 @@ class ExcelContainer
     protected $response_service;
 
     /**
+     *
+     *
      * @param $excelObj
-     * @param $factory_writer
-     * @param string $factory_write_method
      * @param $stream_writer
      * @param $response_service
      */
@@ -37,12 +37,11 @@ class ExcelContainer
         $this->setResponseService($response_service);
     }
 
-    /*
+    /**
      *  create the response with the file content
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-
     public function getResponse()
     {
         $responsiveClass = $this->getResponseService();

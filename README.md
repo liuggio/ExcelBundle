@@ -68,6 +68,33 @@ With PHPExcel you can create: xls, ods, pdf and more.
      ));
 ```
 
+
+
+## AVAILABLE SERVICES
+
+If you want write
+
+``` php
+   // create MS Excel5
+   $xls_service =  $this->get('xls.service_xls5');
+   // create pdf
+   $this->get('xls.service_pdf');
+   // create MS Excel 2007
+   $this->get('xls.service_xls2007');
+
+```
+
+
+If you want read xls
+
+``` php
+    $exelObj = $this->get('xls.load_xls5')->load($filename);
+
+```
+
+
+
+
 ## USAGE
 
 create a controller in your bundle
@@ -120,17 +147,16 @@ class DefaultController extends Controller
 
 ```
 
-If you want read xls if your controller:
 
-``` php
-    $exelObj = $this->get('xls.load_xls5')->load($filename);
-
-```
 
 
 ## ADVANCED USE
 
-if you need PDF, or XLSX see and modify ``liuggio\ExcelBundle\Resources\config\services.yml``
+if you need see and modify ``liuggio\ExcelBundle\Resources\config\services.yml``
+
+
+
+
 
 
 
