@@ -158,6 +158,9 @@ if you need see and modify ``liuggio\ExcelBundle\Resources\config\services.yml``
 ## Contributors
 
 @pivasyk
+
 @dirkbl
+
 @DerStoffel
+
 @artturi
