@@ -5,6 +5,10 @@
         {
             "name": "Giulio De Donato",
             "email": "liuggio@gmail.com"
+        },
+        {
+            "name": "ExcelBundle Contributors",
+            "homepage": "https://github.com/liuggio/ExcelBundle#contributors"
         }
     ],
     "keywords": ["xls","Excel", "symfony2", "bundle"],
