@@ -1,0 +1,59 @@
+{
+    "name": "liuggio/ExcelBundle",
+    "description": "This is a Symfony2 Bundle helps you to read and write Excel files (including pdf, xlsx, odt), thanks to the PHPExcel library",
+    "authors": [
+        {
+            "name": "Giulio De Donato",
+            "email": "liuggio@gmail.com"
+        }
+    ],
+    "keywords": ["xls","Excel", "symfony2", "bundle"],
+    "homepage": "http://www.welcometothebundle.com",
+    "license": "MIT",
+    "repositories": {
+        "n3bStreamresponse": {
+            "type": "package",
+            "package": {
+                "name": "n3bStreamresponse",
+                "version": "master",
+                "source": {
+                    "url": "git://github.com/liuggio/Symfony2-StreamResponse.git",
+                    "type": "git",
+                    "reference": "master"
+                },
+                "autoload": {
+                    "psr-0": { "n3b\\Bundle\\Util\\HttpFoundation\\StreamResponse": "n3b/src" }
+                },
+                "target-dir": "n3b/src/n3b/Bundle/Util/HttpFoundation/StreamResponse"
+            }
+        },
+        "phpExcel": {
+            "type": "package",
+            "package": {
+                "name": "phpExcel",
+                "version": "master",
+                "source": {
+                    "url": "git://github.com/liuggio/PHPExcel.git",
+                    "type": "git",
+                    "reference": "master"
+                },
+                "autoload": {
+                    "classmap": ["lib/"]
+                }
+            }
+        }
+    },
+    "require": {
+        "php": ">=5.3.2",
+        "symfony/framework-bundle": "2.*",
+        "n3bStreamresponse": "master",
+        "phpExcel": "master"
+    },
+
+    "autoload": {
+        "psr-0": {
+            "liuggio\\ExcelBundle": ""
+        }
+    },
+    "target-dir": "bundles/Liuggio/ExcelBundle"
+}
