@@ -24,7 +24,7 @@ you have to know that csv is pretty faster so I encourage you to use the built-i
 1  Add to composer.json to the `require` key  
 
 ``` 
-"liuggio/excel-bundle": "dev-master",
+"liuggio/excelbundle": "dev-master",
 ``` 
 
 and add the repositories:
