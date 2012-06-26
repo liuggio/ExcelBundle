@@ -1,5 +1,6 @@
 Symfony2 Excel bundle
 ============
+
 This Bundle permits to create easly Excel object.
 This is just a dependency injection that links
 
@@ -17,6 +18,12 @@ You could create your own writer extending  ``n3b\Bundle\Util\HttpFoundation\Str
 With PHPExcel you can create: xls, ods, pdf and more,
 
 you have to know that csv is pretty faster so I encourage you to use the built-in function for csv  http://it.php.net/manual-lookup.php?pattern=csv&lang=en&scope=quickref
+
+## Migration
+
+In order to follow the naming convention  https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md  all the liuggio namespaces are migrated to Liuggio.
+
+This master is up-to-date to the symfony/symfony master actually on 2.1
 
 
 ## INSTALLATION with COMPOSER 
