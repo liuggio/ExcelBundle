@@ -4,11 +4,11 @@
     "authors": [
         {
             "name": "Giulio De Donato",
-            "email": "Liuggio@gmail.com"
+            "email": "liuggio@gmail.com"
         },
         {
             "name": "ExcelBundle Contributors",
-            "homepage": "https://github.com/Liuggio/ExcelBundle#contributors"
+            "homepage": "https://github.com/liuggio/ExcelBundle#contributors"
         }
     ],
     "keywords": ["xls","Excel", "symfony2", "bundle"],
@@ -28,7 +28,7 @@
                 "autoload": {
                     "psr-0": { "n3b\\Bundle\\Util\\HttpFoundation\\StreamResponse": "n3b/src" }
                 },
-                "target-dir": "n3b/src/n3b/Bundle/UtilL/HttpFoundation/StreamResponse"
+                "target-dir": "n3b/src/n3b/Bundle/Util/HttpFoundation/StreamResponse"
             }
         },
         "phpExcel": {
@@ -58,5 +58,6 @@
         "psr-0": {
             "Liuggio\\ExcelBundle": ""
         }
-    }
+    },
+    "target-dir": "Liuggio/ExcelBundle"
 }
