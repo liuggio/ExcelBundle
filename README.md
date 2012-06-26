@@ -18,23 +18,53 @@ With PHPExcel you can create: xls, ods, pdf and more.
 
 
 
-## INSTALLATION
+## INSTALLATION COMPOSER 
 
-1 Add the following entry to ``deps`` the run ``php bin/vendors install``.
+1  Add to composer.json to the `require` key  
 
-``` yaml 
-[n3bStreamresponse]
-    git=https://github.com/liuggio/Symfony2-StreamResponse.git
-    target=n3b/src/n3b/Bundle/Util/HttpFoundation/StreamResponse
+``` 
+"liuggio/excelbundle": "dev-master",
+``` 
 
-[phpExcel]
-    git=https://github.com/liuggio/PHPExcel.git
-    target=phpexcel
+and add the repositories:
 
-[liuggioExcelBundle]
-    git=http://github.com/liuggio/ExcelBundle.git
-    target=/bundles/liuggio/ExcelBundle
 ```
+    "repositories": {
+        "n3bStreamresponse": {
+            "type": "package",
+            "package": {
+                "name": "n3bStreamresponse",
+                "version": "master",
+                "source": {
+                    "url": "git://github.com/liuggio/Symfony2-StreamResponse.git",
+                    "type": "git",
+                    "reference": "master"
+                },
+                "autoload": {
+                    "psr-0": { "n3b\\Bundle\\Util\\HttpFoundation\\StreamResponse": "n3b/src" }
+                },
+                "target-dir": "n3b/src/n3b/Bundle/Util/HttpFoundation/StreamResponse"
+            }
+        },
+        "phpExcel": {
+            "type": "package",
+            "package": {
+                "name": "phpExcel",
+                "version": "master",
+                "source": {
+                    "url": "git://github.com/liuggio/PHPExcel.git",
+                    "type": "git",
+                    "reference": "master"
+                },
+                "autoload": {
+                    "classmap": ["lib/"]
+                }
+            }
+        }
+    },
+
+```
+ 
 
 2 Register the bundle in ``app/AppKernel.php``
 
@@ -44,20 +74,9 @@ With PHPExcel you can create: xls, ods, pdf and more.
         new liuggio\ExcelBundle\liuggioExcelBundle(),
     );
 ```
+ 
 
-3  Register namespace in ``app/autoload.php``
-
-``` php
-    $loader->registerNamespaces(array(
-         // ...
-         'n3b\\Bundle\\Util\\HttpFoundation\\StreamResponse'  => __DIR__.'/../vendor/n3b/src',
-         
-         'liuggio'              => __DIR__.'/../vendor/bundles',
-     ));
-```
-
-
-4  Register the prefix for the library
+3  Register the prefix for the library into the autoload.php
 
 ``` php
      $loader->registerPrefixes(array(
@@ -67,7 +86,6 @@ With PHPExcel you can create: xls, ods, pdf and more.
          'PHPExcel'         => __DIR__.'/../vendor/phpexcel/lib/PHPExcel/Classes',
      ));
 ```
-
 
 
 ## AVAILABLE SERVICES
