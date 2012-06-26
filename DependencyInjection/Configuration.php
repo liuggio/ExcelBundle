@@ -1,6 +1,6 @@
 <?php
 
-namespace liuggio\ExcelBundle\DependencyInjection;
+namespace Liuggio\ExcelBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;

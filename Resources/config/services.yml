@@ -7,7 +7,7 @@ parameters:
     xls.factory2007.method: "PHPExcel_Writer_Excel2007"
     xls.factoryPDF.method: "PHPExcel_Writer_PDF"
     xls.factory.write_method: "save"
-    xls.service.class: liuggio\ExcelBundle\Service\ExcelContainer
+    xls.service.class: Liuggio\ExcelBundle\Service\ExcelContainer
 
 services:
     xls.phpexcel:

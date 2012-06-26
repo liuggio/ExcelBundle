@@ -1,6 +1,6 @@
 <?php
 
-namespace liuggio\ExcelBundle\Service;
+namespace Liuggio\ExcelBundle\Service;
 
 /**
  *

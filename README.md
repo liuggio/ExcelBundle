@@ -24,7 +24,7 @@ you have to know that csv is pretty faster so I encourage you to use the built-i
 1  Add to composer.json to the `require` key  
 
 ``` 
-"liuggio/excelbundle": "dev-master",
+"liuggio/excel-bundle": "dev-master",
 ``` 
 
 and add the repositories:
@@ -72,21 +72,10 @@ and add the repositories:
 ``` php
     $bundles = array(
         // ...
-        new liuggio\ExcelBundle\liuggioExcelBundle(),
+        new Liuggio\ExcelBundle\LiuggioExcelBundle(),
     );
 ```
  
-
-3  Register the prefix for the library into the autoload.php
-
-``` php
-     $loader->registerPrefixes(array(
-         'Twig_Extensions_' => __DIR__.'/../vendor/twig-extensions/lib',
-         'Twig_'            => __DIR__.'/../vendor/twig/lib',
-          // ...
-         'PHPExcel'         => __DIR__.'/../vendor/phpexcel/lib/PHPExcel/Classes',
-     ));
-```
 
 
 ## AVAILABLE SERVICES
@@ -171,7 +160,7 @@ class DefaultController extends Controller
 
 ## ADVANCED USE
 
-if you need see and modify ``liuggio\ExcelBundle\Resources\config\services.yml``
+if you need see and modify ``Liuggio\ExcelBundle\Resources\config\services.yml``
 
 
 ## Contributors

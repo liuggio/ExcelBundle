@@ -24,16 +24,16 @@ With PHPExcel you can create: xls, ods, pdf and more.
 
 ``` yaml 
 [n3bStreamresponse]
-    git=https://github.com/liuggio/Symfony2-StreamResponse.git
+    git=https://github.com/Liuggio/Symfony2-StreamResponse.git
     target=n3b/src/n3b/Bundle/Util/HttpFoundation/StreamResponse
 
 [phpExcel]
-    git=https://github.com/liuggio/PHPExcel.git
+    git=https://github.com/Liuggio/PHPExcel.git
     target=phpexcel
 
-[liuggioExcelBundle]
-    git=http://github.com/liuggio/ExcelBundle.git
-    target=/bundles/liuggio/ExcelBundle
+[LiuggioExcelBundle]
+    git=http://github.com/Liuggio/ExcelBundle.git
+    target=/bundles/Liuggio/ExcelBundle
 ```
 
 2 Register the bundle in ``app/AppKernel.php``
@@ -41,7 +41,7 @@ With PHPExcel you can create: xls, ods, pdf and more.
 ``` php
     $bundles = array(
         // ...
-        new liuggio\ExcelBundle\liuggioExcelBundle(),
+        new Liuggio\ExcelBundle\LiuggioExcelBundle(),
     );
 ```
 
@@ -52,7 +52,7 @@ With PHPExcel you can create: xls, ods, pdf and more.
          // ...
          'n3b\\Bundle\\Util\\HttpFoundation\\StreamResponse'  => __DIR__.'/../vendor/n3b/src',
          
-         'liuggio'              => __DIR__.'/../vendor/bundles',
+         'Liuggio'              => __DIR__.'/../vendor/bundles',
      ));
 ```
 
@@ -152,7 +152,7 @@ class DefaultController extends Controller
 
 ## ADVANCED USE
 
-if you need see and modify ``liuggio\ExcelBundle\Resources\config\services.yml``
+if you need see and modify ``Liuggio\ExcelBundle\Resources\config\services.yml``
 
 
 ## Contributors

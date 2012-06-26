@@ -1,14 +1,14 @@
 {
-    "name": "liuggio/ExcelBundle",
+    "name": "liuggio/excel-bundle",
     "description": "This is a Symfony2 Bundle helps you to read and write Excel files (including pdf, xlsx, odt), thanks to the PHPExcel library",
     "authors": [
         {
             "name": "Giulio De Donato",
-            "email": "liuggio@gmail.com"
+            "email": "Liuggio@gmail.com"
         },
         {
             "name": "ExcelBundle Contributors",
-            "homepage": "https://github.com/liuggio/ExcelBundle#contributors"
+            "homepage": "https://github.com/Liuggio/ExcelBundle#contributors"
         }
     ],
     "keywords": ["xls","Excel", "symfony2", "bundle"],
@@ -28,7 +28,7 @@
                 "autoload": {
                     "psr-0": { "n3b\\Bundle\\Util\\HttpFoundation\\StreamResponse": "n3b/src" }
                 },
-                "target-dir": "n3b/src/n3b/Bundle/Util/HttpFoundation/StreamResponse"
+                "target-dir": "n3b/src/n3b/Bundle/UtilL/HttpFoundation/StreamResponse"
             }
         },
         "phpExcel": {
@@ -56,8 +56,7 @@
 
     "autoload": {
         "psr-0": {
-            "liuggio\\ExcelBundle": ""
+            "Liuggio\\ExcelBundle": ""
         }
-    },
-    "target-dir": "bundles/Liuggio/ExcelBundle"
+    }
 }
