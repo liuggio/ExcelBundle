@@ -16,7 +16,7 @@ You could create your own writer extending  ``n3b\Bundle\Util\HttpFoundation\Str
 
 With PHPExcel you can create: xls, ods, pdf and more,
 
-you have to know that csv is pretty faster so I encourage you to use the built-in php for csv  http://it.php.net/manual-lookup.php?pattern=csv&lang=en&scope=quickref
+you have to know that csv is pretty faster so I encourage you to use the built-in function for csv  http://it.php.net/manual-lookup.php?pattern=csv&lang=en&scope=quickref
 
 
 ## INSTALLATION with COMPOSER 
