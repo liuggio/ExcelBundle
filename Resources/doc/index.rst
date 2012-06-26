@@ -14,27 +14,58 @@ This is just a dependency injection that links
 
 You could create your own writer extending  ``n3b\Bundle\Util\HttpFoundation\StreamResponse\StreamWriterInterface`` or you could use the Huge Xls library called PHPExcel.
 
-With PHPExcel you can create: xls, ods, pdf and more.
+With PHPExcel you can create: xls, ods, pdf and more,
+
+you have to know that csv is pretty faster so I encourage you to use the built-in function for csv  http://it.php.net/manual-lookup.php?pattern=csv&lang=en&scope=quickref
 
 
+## INSTALLATION with COMPOSER 
 
-## INSTALLATION
+1  Add to composer.json to the `require` key  
 
-1 Add the following entry to ``deps`` the run ``php bin/vendors install``.
+``` 
+"liuggio/excelbundle": "dev-master",
+``` 
 
-``` yaml 
-[n3bStreamresponse]
-    git=https://github.com/Liuggio/Symfony2-StreamResponse.git
-    target=n3b/src/n3b/Bundle/Util/HttpFoundation/StreamResponse
+and add the repositories:
 
-[phpExcel]
-    git=https://github.com/Liuggio/PHPExcel.git
-    target=phpexcel
-
-[LiuggioExcelBundle]
-    git=http://github.com/Liuggio/ExcelBundle.git
-    target=/bundles/Liuggio/ExcelBundle
 ```
+    "repositories": {
+        "n3bStreamresponse": {
+            "type": "package",
+            "package": {
+                "name": "n3bStreamresponse",
+                "version": "master",
+                "source": {
+                    "url": "git://github.com/liuggio/Symfony2-StreamResponse.git",
+                    "type": "git",
+                    "reference": "master"
+                },
+                "autoload": {
+                    "psr-0": { "n3b\\Bundle\\Util\\HttpFoundation\\StreamResponse": "n3b/src" }
+                },
+                "target-dir": "n3b/src/n3b/Bundle/Util/HttpFoundation/StreamResponse"
+            }
+        },
+        "phpExcel": {
+            "type": "package",
+            "package": {
+                "name": "phpExcel",
+                "version": "master",
+                "source": {
+                    "url": "git://github.com/liuggio/PHPExcel.git",
+                    "type": "git",
+                    "reference": "master"
+                },
+                "autoload": {
+                    "classmap": ["lib/"]
+                }
+            }
+        }
+    },
+
+```
+ 
 
 2 Register the bundle in ``app/AppKernel.php``
 
@@ -44,30 +75,7 @@ With PHPExcel you can create: xls, ods, pdf and more.
         new Liuggio\ExcelBundle\LiuggioExcelBundle(),
     );
 ```
-
-3  Register namespace in ``app/autoload.php``
-
-``` php
-    $loader->registerNamespaces(array(
-         // ...
-         'n3b\\Bundle\\Util\\HttpFoundation\\StreamResponse'  => __DIR__.'/../vendor/n3b/src',
-         
-         'Liuggio'              => __DIR__.'/../vendor/bundles',
-     ));
-```
-
-
-4  Register the prefix for the library
-
-``` php
-     $loader->registerPrefixes(array(
-         'Twig_Extensions_' => __DIR__.'/../vendor/twig-extensions/lib',
-         'Twig_'            => __DIR__.'/../vendor/twig/lib',
-          // ...
-         'PHPExcel'         => __DIR__.'/../vendor/phpexcel/lib/PHPExcel/Classes',
-     ));
-```
-
+ 
 
 
 ## AVAILABLE SERVICES
@@ -158,9 +166,13 @@ if you need see and modify ``Liuggio\ExcelBundle\Resources\config\services.yml``
 ## Contributors
 
 @pivasyk
+
 @dirkbl
+
 @DerStoffel
+
 @artturi
 
+@isqad88
 
-
+@mazenovi
