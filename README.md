@@ -14,11 +14,12 @@ This is just a dependency injection that links
 
 You could create your own writer extending  ``n3b\Bundle\Util\HttpFoundation\StreamResponse\StreamWriterInterface`` or you could use the Huge Xls library called PHPExcel.
 
-With PHPExcel you can create: xls, ods, pdf and more.
+With PHPExcel you can create: xls, ods, pdf and more,
+
+you have to know that csv is pretty faster so I encourage you to use the built-in php for csv  http://it.php.net/manual-lookup.php?pattern=csv&lang=en&scope=quickref
 
 
-
-## INSTALLATION COMPOSER 
+## INSTALLATION with COMPOSER 
 
 1  Add to composer.json to the `require` key  
 
