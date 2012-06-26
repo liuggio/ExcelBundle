@@ -1,5 +1,5 @@
 {
-    "name": "liuggio/excel-bundle",
+    "name": "liuggio/ExcelBundle",
     "description": "This is a Symfony2 Bundle helps you to read and write Excel files (including pdf, xlsx, odt), thanks to the PHPExcel library",
     "authors": [
         {
