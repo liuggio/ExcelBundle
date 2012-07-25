@@ -162,7 +162,18 @@ class DefaultController extends Controller
 
 ```
 
+With the right writer (e.g. PHPExcel_Writer_Excel5) you could also write the output to a file:
+``` php
+    
+	public function indexAction($name)
+    {
+        $xls_service =  $this->get('xls.service_xls5');	
 
+        //...create php excel object
+
+        $xls_service->getStreamWriter()->write( $filename );
+    }
+```
 
 
 ## ADVANCED USE
@@ -183,3 +194,5 @@ if you need see and modify ``Liuggio\ExcelBundle\Resources\config\services.yml``
 @isqad88
 
 @mazenovi
+
+@jochenhilgers
