@@ -92,7 +92,7 @@ If you want write
 
 ``` php
    // create MS Excel5
-   $xls_service =  $this->get('xls.service_xls5');
+   $excelService = $this->get('xls.service_xls5');
    // create pdf
    $this->get('xls.service_pdf');
    // create MS Excel 2007
@@ -129,28 +129,28 @@ class DefaultController extends Controller
     public function indexAction($name)
     {
         // ask the service for a Excel5
-        $xls_service =  $this->get('xls.service_xls5');
+        $excelService = $this->get('xls.service_xls5');
         // or $this->get('xls.service_pdf');
         // or create your own is easy just modify services.yml
 
 
         // create the object see http://phpexcel.codeplex.com documentation
-        $xls_service->excelObj->getProperties()->setCreator("Maarten Balliauw")
+        $excelService->excelObj->getProperties()->setCreator("Maarten Balliauw")
                             ->setLastModifiedBy("Maarten Balliauw")
                             ->setTitle("Office 2005 XLSX Test Document")
                             ->setSubject("Office 2005 XLSX Test Document")
                             ->setDescription("Test document for Office 2005 XLSX, generated using PHP classes.")
                             ->setKeywords("office 2005 openxml php")
                             ->setCategory("Test result file");
-        $xls_service->excelObj->setActiveSheetIndex(0)
+        $excelService->excelObj->setActiveSheetIndex(0)
                     ->setCellValue('A1', 'Hello')
                     ->setCellValue('B2', 'world!');
-        $xls_service->excelObj->getActiveSheet()->setTitle('Simple');
+        $excelService->excelObj->getActiveSheet()->setTitle('Simple');
         // Set active sheet index to the first sheet, so Excel opens this as the first sheet
-        $xls_service->excelObj->setActiveSheetIndex(0);
+        $excelService->excelObj->setActiveSheetIndex(0);
  
         //create the response
-        $response = $xls_service->getResponse();
+        $response = $excelService->getResponse();
         $response->headers->set('Content-Type', 'text/vnd.ms-excel; charset=utf-8');
         $response->headers->set('Content-Disposition', 'attachment;filename=stdream2.xls');
         
@@ -168,11 +168,11 @@ With the right writer (e.g. PHPExcel_Writer_Excel5) you could also write the out
     
 	public function indexAction($name)
     {
-        $xls_service =  $this->get('xls.service_xls5');	
+        $excelService = $this->get('xls.service_xls5');	
 
         //...create php excel object
 
-        $xls_service->getStreamWriter()->write( $filename );
+        $excelService->getStreamWriter()->write( $filename );
     }
 ```
 
