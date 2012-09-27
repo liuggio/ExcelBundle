@@ -83,6 +83,50 @@ and add the repositories:
         new Liuggio\ExcelBundle\LiuggioExcelBundle(),
     );
 ```
+
+## INSTALLATION with deps file
+
+1  Add to the following to your `deps` file, then run `php bin/vendors install`
+
+``` yaml
+[PHPExcel]
+    git=http://github.com/PHPOffice/PHPExcel.git
+    target=/phpexcel
+    version=origin/master
+
+[n3bStreamresponse]
+    git=git://github.com/liuggio/Symfony2-StreamResponse.git
+    target=n3b/src/n3b/Bundle/Util/HttpFoundation/StreamResponse
+
+[LiuggioExcelBundle]
+    git=https://github.com/liuggio/ExcelBundle.git
+    target=/bundles/Liuggio/ExcelBundle
+``` 
+
+2  Register the namespaces and prefixes in `app/autoload.php`:
+
+``` php
+    $loader->registerNamespaces(array(
+        // ...
+        'n3b\\Bundle\\Util\\HttpFoundation\\StreamResponse' => __DIR__.'/../vendor/n3b/src',
+        'Liuggio'          => __DIR__.'/../vendor/bundles',
+    ));
+    $loader->registerPrefixes(array(
+        // ...
+        'PHPExcel'         => __DIR__.'/../vendor/phpexcel/Classes',
+    ));
+
+```
+ 
+
+3 Enable the bundle in `app/AppKernel.php`
+
+``` php
+    $bundles = array(
+        // ...
+        new Liuggio\ExcelBundle\LiuggioExcelBundle(),
+    );
+```
  
 
 
@@ -92,7 +136,7 @@ If you want write
 
 ``` php
    // create MS Excel5
-   $xls_service =  $this->get('xls.service_xls5');
+   $excelService = $this->get('xls.service_xls5');
    // create pdf
    $this->get('xls.service_pdf');
    // create MS Excel 2007
@@ -129,28 +173,28 @@ class DefaultController extends Controller
     public function indexAction($name)
     {
         // ask the service for a Excel5
-        $xls_service =  $this->get('xls.service_xls5');
+        $excelService = $this->get('xls.service_xls5');
         // or $this->get('xls.service_pdf');
         // or create your own is easy just modify services.yml
 
 
         // create the object see http://phpexcel.codeplex.com documentation
-        $xls_service->excelObj->getProperties()->setCreator("Maarten Balliauw")
+        $excelService->excelObj->getProperties()->setCreator("Maarten Balliauw")
                             ->setLastModifiedBy("Maarten Balliauw")
                             ->setTitle("Office 2005 XLSX Test Document")
                             ->setSubject("Office 2005 XLSX Test Document")
                             ->setDescription("Test document for Office 2005 XLSX, generated using PHP classes.")
                             ->setKeywords("office 2005 openxml php")
                             ->setCategory("Test result file");
-        $xls_service->excelObj->setActiveSheetIndex(0)
+        $excelService->excelObj->setActiveSheetIndex(0)
                     ->setCellValue('A1', 'Hello')
                     ->setCellValue('B2', 'world!');
-        $xls_service->excelObj->getActiveSheet()->setTitle('Simple');
+        $excelService->excelObj->getActiveSheet()->setTitle('Simple');
         // Set active sheet index to the first sheet, so Excel opens this as the first sheet
-        $xls_service->excelObj->setActiveSheetIndex(0);
+        $excelService->excelObj->setActiveSheetIndex(0);
  
         //create the response
-        $response = $xls_service->getResponse();
+        $response = $excelService->getResponse();
         $response->headers->set('Content-Type', 'text/vnd.ms-excel; charset=utf-8');
         $response->headers->set('Content-Disposition', 'attachment;filename=stdream2.xls');
         
@@ -168,11 +212,11 @@ With the right writer (e.g. PHPExcel_Writer_Excel5) you could also write the out
     
 	public function indexAction($name)
     {
-        $xls_service =  $this->get('xls.service_xls5');	
+        $excelService = $this->get('xls.service_xls5');	
 
         //...create php excel object
 
-        $xls_service->getStreamWriter()->write( $filename );
+        $excelService->getStreamWriter()->write( $filename );
     }
 ```
 
