@@ -83,6 +83,50 @@ and add the repositories:
         new Liuggio\ExcelBundle\LiuggioExcelBundle(),
     );
 ```
+
+## INSTALLATION with deps file
+
+1  Add to the following to your `deps` file, then run `php bin/vendors install`
+
+``` yaml
+[PHPExcel]
+    git=http://github.com/PHPOffice/PHPExcel.git
+    target=/phpexcel
+    version=origin/master
+
+[n3bStreamresponse]
+    git=git://github.com/liuggio/Symfony2-StreamResponse.git
+    target=n3b/src/n3b/Bundle/Util/HttpFoundation/StreamResponse
+
+[LiuggioExcelBundle]
+    git=https://github.com/liuggio/ExcelBundle.git
+    target=/bundles/Liuggio/ExcelBundle
+``` 
+
+2  Register the namespaces and prefixes in `app/autoload.php`:
+
+``` php
+    $loader->registerNamespaces(array(
+        // ...
+        'n3b\\Bundle\\Util\\HttpFoundation\\StreamResponse' => __DIR__.'/../vendor/n3b/src',
+        'Liuggio'          => __DIR__.'/../vendor/bundles',
+    ));
+    $loader->registerPrefixes(array(
+        // ...
+        'PHPExcel'         => __DIR__.'/../vendor/phpexcel/Classes',
+    ));
+
+```
+ 
+
+3 Enable the bundle in `app/AppKernel.php`
+
+``` php
+    $bundles = array(
+        // ...
+        new Liuggio\ExcelBundle\LiuggioExcelBundle(),
+    );
+```
  
 
 
