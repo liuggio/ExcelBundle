@@ -241,3 +241,5 @@ if you need see and modify ``Liuggio\ExcelBundle\Resources\config\services.yml``
 @mazenovi
 
 @jochenhilgers
+
+@Squazic
