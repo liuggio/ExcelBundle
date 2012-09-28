@@ -11,6 +11,7 @@
             "homepage": "https://github.com/liuggio/ExcelBundle#contributors"
         }
     ],
+
     "keywords": ["xls","Excel", "symfony2", "bundle"],
     "homepage": "http://www.welcometothebundle.com",
     "license": "MIT",
@@ -19,7 +20,7 @@
             "type": "package",
             "package": {
                 "name": "n3bStreamresponse",
-                "version": "master",
+                "version": "1.0.0",
                 "source": {
                     "url": "git://github.com/liuggio/Symfony2-StreamResponse.git",
                     "type": "git",
@@ -35,14 +36,14 @@
             "type": "package",
             "package": {
                 "name": "phpExcel",
-                "version": "master",
+                "version": "1.0.0",
                 "source": {
-                    "url": "git://github.com/liuggio/PHPExcel.git",
+                    "url": "git://github.com/PHPOffice/PHPExcel.git",
                     "type": "git",
                     "reference": "master"
                 },
                 "autoload": {
-                    "classmap": ["lib/"]
+                    "classmap": [""]
                 }
             }
         }
@@ -50,8 +51,8 @@
     "require": {
         "php": ">=5.3.2",
         "symfony/framework-bundle": "2.*",
-        "n3bStreamresponse": "master",
-        "phpExcel": "master"
+        "n3bStreamresponse": ">=1.0.0",
+        "phpExcel": "1.0.0"
     },
 
     "autoload": {
