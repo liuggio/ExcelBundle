@@ -32,7 +32,7 @@ This master is up-to-date to the symfony/symfony master actually on 2.1
 1  Add to composer.json to the `require` key  
 
 ``` 
-"liuggio/excelbundle": "dev-master",
+"liuggio/excelbundle": ">=1.0.0",
 ``` 
 
 and add the repositories:
@@ -43,7 +43,7 @@ and add the repositories:
             "type": "package",
             "package": {
                 "name": "n3bStreamresponse",
-                "version": "master",
+                "version": "1.0.0",
                 "source": {
                     "url": "git://github.com/liuggio/Symfony2-StreamResponse.git",
                     "type": "git",
@@ -59,18 +59,17 @@ and add the repositories:
             "type": "package",
             "package": {
                 "name": "phpExcel",
-                "version": "master",
+                "version": "1.0.0",
                 "source": {
-                    "url": "git://github.com/liuggio/PHPExcel.git",
+                    "url": "git://github.com/PHPOffice/PHPExcel.git",
                     "type": "git",
                     "reference": "master"
                 },
                 "autoload": {
-                    "classmap": ["lib/"]
+                    "classmap": [""]
                 }
             }
-        }
-    },
+        },
 
 ```
  
