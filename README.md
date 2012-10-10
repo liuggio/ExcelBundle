@@ -69,8 +69,8 @@ and add the repositories:
                     "classmap": [""]
                 }
             }
-        },
-
+        }
+    }
 ```
  
 
