@@ -70,7 +70,7 @@ and add the repositories:
                 }
             }
         },
-
+    }
 ```
  
 
