@@ -18,7 +18,7 @@
     "require": {
         "php": ">=5.3.2",
         "symfony/framework-bundle": "2.*",
-        "irongit/symfony2-stream-response": "dev-master",
+        "nercury/symfony2-stream-response": "dev-master",
         "CodePlex/PHPExcel": "1.7.7"
     },
     "autoload": {
