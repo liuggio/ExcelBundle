@@ -35,45 +35,6 @@ This master is up-to-date to the symfony/symfony master actually on 2.1
 "liuggio/excelbundle": ">=1.0.0",
 ``` 
 
-and add the repositories:
-
-```
-    "repositories": {
-        "n3bStreamresponse": {
-            "type": "package",
-            "package": {
-                "name": "n3bStreamresponse",
-                "version": "1.0.0",
-                "source": {
-                    "url": "git://github.com/liuggio/Symfony2-StreamResponse.git",
-                    "type": "git",
-                    "reference": "master"
-                },
-                "autoload": {
-                    "psr-0": { "n3b\\Bundle\\Util\\HttpFoundation\\StreamResponse": "n3b/src" }
-                },
-                "target-dir": "n3b/src/n3b/Bundle/Util/HttpFoundation/StreamResponse"
-            }
-        },
-        "phpExcel": {
-            "type": "package",
-            "package": {
-                "name": "phpExcel",
-                "version": "1.0.0",
-                "source": {
-                    "url": "git://github.com/PHPOffice/PHPExcel.git",
-                    "type": "git",
-                    "reference": "master"
-                },
-                "autoload": {
-                    "classmap": [""]
-                }
-            }
-        }
-    }
-```
- 
-
 2 Register the bundle in ``app/AppKernel.php``
 
 ``` php
@@ -83,55 +44,9 @@ and add the repositories:
     );
 ```
 
-## INSTALLATION with deps file
-
-1  Add to the following to your `deps` file, then run `php bin/vendors install`
-
-``` yaml
-[PHPExcel]
-    git=http://github.com/PHPOffice/PHPExcel.git
-    target=/phpexcel
-    version=origin/master
-
-[n3bStreamresponse]
-    git=git://github.com/liuggio/Symfony2-StreamResponse.git
-    target=n3b/src/n3b/Bundle/Util/HttpFoundation/StreamResponse
-
-[LiuggioExcelBundle]
-    git=https://github.com/liuggio/ExcelBundle.git
-    target=/bundles/Liuggio/ExcelBundle
-``` 
-
-2  Register the namespaces and prefixes in `app/autoload.php`:
-
-``` php
-    $loader->registerNamespaces(array(
-        // ...
-        'n3b\\Bundle\\Util\\HttpFoundation\\StreamResponse' => __DIR__.'/../vendor/n3b/src',
-        'Liuggio'          => __DIR__.'/../vendor/bundles',
-    ));
-    $loader->registerPrefixes(array(
-        // ...
-        'PHPExcel'         => __DIR__.'/../vendor/phpexcel/Classes',
-    ));
-
-```
- 
-
-3 Enable the bundle in `app/AppKernel.php`
-
-``` php
-    $bundles = array(
-        // ...
-        new Liuggio\ExcelBundle\LiuggioExcelBundle(),
-    );
-```
- 
-
-
 ## AVAILABLE SERVICES
 
-If you want write
+If you want to write
 
 ``` php
    // create MS Excel5
@@ -144,7 +59,7 @@ If you want write
 ```
 
 
-If you want read xls
+If you want to read xls
 
 ``` php
     $exelObj = $this->get('xls.load_xls5')->load($filename);
@@ -156,7 +71,7 @@ If you want read xls
 
 ## USAGE
 
-create a controller in your bundle
+Create a controller in your bundle
 
 
 ``` php
