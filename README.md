@@ -1,7 +1,7 @@
 Symfony2 Excel bundle
 ============
 
-This Bundle permits to create easly Excel object.
+This bundle permits you to create an easily modifiable excel object.
 This is just a dependency injection that links
 
 
@@ -14,11 +14,9 @@ This is just a dependency injection that links
 - A Writer.
  
 
-You could create your own writer extending  ``n3b\Bundle\Util\HttpFoundation\StreamResponse\StreamWriterInterface`` or you could use the Huge Xls library called PHPExcel.
+You could create your own writer extending  ``n3b\Bundle\Util\HttpFoundation\StreamResponse\StreamWriterInterface`` or you could use the great PHPExcel library. With PHPExcel you can create xls, ods, pdf and more.
 
-With PHPExcel you can create: xls, ods, pdf and more,
-
-you have to know that csv is pretty faster so I encourage you to use the built-in function for csv  http://it.php.net/manual-lookup.php?pattern=csv&lang=en&scope=quickref
+You have to know that csv is faster so I encourage you to use the built-in function for csv: http://it.php.net/manual-lookup.php?pattern=csv&lang=en&scope=quickref
 
 ## Migration
 
@@ -32,46 +30,10 @@ This master is up-to-date to the symfony/symfony master actually on 2.1
 1  Add to composer.json to the `require` key  
 
 ``` 
-"liuggio/excelbundle": ">=1.0.0",
-``` 
-
-and add the repositories:
-
-```
-    "repositories": {
-        "n3bStreamresponse": {
-            "type": "package",
-            "package": {
-                "name": "n3bStreamresponse",
-                "version": "1.0.0",
-                "source": {
-                    "url": "git://github.com/liuggio/Symfony2-StreamResponse.git",
-                    "type": "git",
-                    "reference": "master"
-                },
-                "autoload": {
-                    "psr-0": { "n3b\\Bundle\\Util\\HttpFoundation\\StreamResponse": "n3b/src" }
-                },
-                "target-dir": "n3b/src/n3b/Bundle/Util/HttpFoundation/StreamResponse"
-            }
-        },
-        "phpExcel": {
-            "type": "package",
-            "package": {
-                "name": "phpExcel",
-                "version": "1.0.0",
-                "source": {
-                    "url": "git://github.com/PHPOffice/PHPExcel.git",
-                    "type": "git",
-                    "reference": "master"
-                },
-                "autoload": {
-                    "classmap": [""]
-                }
-            }
-        }
+    "require" : {
+        "liuggio/excelbundle": ">=1.0.0",
     }
-```
+``` 
  
 
 2 Register the bundle in ``app/AppKernel.php``
@@ -131,7 +93,7 @@ and add the repositories:
 
 ## AVAILABLE SERVICES
 
-If you want write
+If you want to write
 
 ``` php
    // create MS Excel5
@@ -144,10 +106,10 @@ If you want write
 ```
 
 
-If you want read xls
+If you want to read xls
 
 ``` php
-    $exelObj = $this->get('xls.load_xls5')->load($filename);
+    $excelObj = $this->get('xls.load_xls5')->load($filename);
 
 ```
 
@@ -156,7 +118,7 @@ If you want read xls
 
 ## USAGE
 
-create a controller in your bundle
+Create a controller in your bundle
 
 
 ``` php
@@ -222,7 +184,7 @@ With the right writer (e.g. PHPExcel_Writer_Excel5) you could also write the out
 
 ## ADVANCED USE
 
-if you need see and modify ``Liuggio\ExcelBundle\Resources\config\services.yml``
+If you need to, see and modify ``Liuggio\ExcelBundle\Resources\config\services.yml``
 
 
 ## Contributors
