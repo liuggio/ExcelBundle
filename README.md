@@ -30,7 +30,9 @@ This master is up-to-date to the symfony/symfony master actually on 2.1
 1  Add to composer.json to the `require` key  
 
 ``` 
-"    liuggio/excelbundle": ">=1.0.0",
+    "require" : {
+        "liuggio/excelbundle": ">=1.0.0",
+    }
 ``` 
  
 
