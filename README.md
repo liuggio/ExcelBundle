@@ -31,7 +31,7 @@ This master is up-to-date to the symfony/symfony master actually on 2.1
 
 ``` 
     "require" : {
-        "liuggio/excelbundle": ">=1.0.0",
+        "liuggio/excelbundle": ">=1.0.4",
     }
 ``` 
  
