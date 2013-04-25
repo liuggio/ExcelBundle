@@ -32,7 +32,55 @@ This master is up-to-date to the symfony/symfony master actually on 2.1
 ``` 
     "require" : {
         "liuggio/excelbundle": ">=1.0.4",
-    }
+    },
+    "repositories": {
+        "phpoffice/phpexcel": {
+            "type": "package",
+            "package": {
+                "description": "PHPExcel - OpenXML - Read, Create and Write Spreadsheet documents in PHP - Spreadsheet engine",
+                "keywords": ["PHP","Excel","OpenXML","xlsx","xls","spreadsheet"],
+                "homepage": "http://phpexcel.codeplex.com",
+                "type": "library",
+                "license": "LGPL",
+                "authors": [
+                    {
+                        "name": "Maarten Balliauw",
+                        "homepage": "http://blog.maartenballiauw.be"
+                    },
+                    {
+                        "name": "Mark Baker"
+                    },
+                    {
+                        "name": "Franck Lefevre",
+                        "homepage": "http://blog.rootslabs.net"
+                    },
+                    {
+                        "name": "Erik Tilt"
+                    }
+                ],
+                "require": {
+                    "php": ">=5.2.0",
+                    "ext-xml": "*"
+                },
+                "recommend": {
+                    "ext-zip": "*",
+                    "ext-gd2": "*"
+                },
+                "autoload": {
+                    "psr-0": {
+                        "PHPExcel": "Classes/"
+                    }
+                },
+                "name": "phpoffice/phpexcel",
+                "version": "1.7.8",
+                "source": {
+                    "url": "git://github.com/PHPOffice/PHPExcel.git",
+                    "type": "git",
+                    "reference": "dfcd839e61b5534039b1b9d15a95d8a6d2c1cfd0"
+                }
+            }
+        }
+    },
 ``` 
  
 
