@@ -1,6 +1,8 @@
 Symfony2 Excel bundle
 ============
 
+[![Total Downloads](https://poser.pugx.org/liuggio/ExcelBundle/downloads.png)](https://packagist.org/packages/liuggio/ExcelBundle) [![Latest Stable Version](https://poser.pugx.org/liuggio/ExcelBundle/v/stable.png)](https://packagist.org/packages/liuggio/ExcelBundle)
+
 This bundle permits you to create an easily modifiable excel object.
 This is just a dependency injection that links
 
