@@ -1,3 +1,4 @@
+
 {
     "name": "liuggio/excelbundle",
     "description": "This is a Symfony2 Bundle helps you to read and write Excel files (including pdf, xlsx, odt), thanks to the PHPExcel library",
@@ -11,7 +12,54 @@
             "homepage": "https://github.com/liuggio/ExcelBundle#contributors"
         }
     ],
-
+    "repositories": {
+        "phpoffice/phpexcel": {
+            "type": "package",
+            "package": {
+                "description": "PHPExcel - OpenXML - Read, Create and Write Spreadsheet documents in PHP - Spreadsheet engine",
+                "keywords": ["PHP","Excel","OpenXML","xlsx","xls","spreadsheet"],
+                "homepage": "http://phpexcel.codeplex.com",
+                "type": "library",
+                "license": "LGPL",
+                "authors": [
+                    {
+                        "name": "Maarten Balliauw",
+                        "homepage": "http://blog.maartenballiauw.be"
+                    },
+                    {
+                        "name": "Mark Baker"
+                    },
+                    {
+                        "name": "Franck Lefevre",
+                        "homepage": "http://blog.rootslabs.net"
+                    },
+                    {
+                        "name": "Erik Tilt"
+                    }
+                ],
+                "require": {
+                    "php": ">=5.2.0",
+                    "ext-xml": "*"
+                },
+                "recommend": {
+                    "ext-zip": "*",
+                    "ext-gd2": "*"
+                },
+                "autoload": {
+                    "psr-0": {
+                        "PHPExcel": "Classes/"
+                    }
+                },
+                "name": "phpoffice/phpexcel",
+                "version": "1.7.8",
+                "source": {
+                    "url": "git://github.com/PHPOffice/PHPExcel.git",
+                    "type": "git",
+                    "reference": "dfcd839e61b5534039b1b9d15a95d8a6d2c1cfd0"
+                }
+            }
+        }
+    },
     "keywords": ["xls","Excel", "symfony2", "bundle"],
     "homepage": "http://www.welcometothebundle.com",
     "license": "MIT",
@@ -19,7 +67,7 @@
         "php": ">=5.3.2",
         "symfony/framework-bundle": "2.*",
         "irongit/symfony2-stream-response": ">=1.0",
-        "CodePlex/PHPExcel": "1.7.8"
+        "phpoffice/phpexcel": "1.7.8"
     },
     "autoload": {
         "psr-0": {
@@ -27,4 +75,6 @@
         }
     },
     "target-dir": "Liuggio/ExcelBundle"
+
 }
+
