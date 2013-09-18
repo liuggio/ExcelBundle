@@ -2,33 +2,34 @@
 
 namespace Liuggio\ExcelBundle\Service;
 
+use n3b\Bundle\Util\HttpFoundation\StreamResponse\StreamResponse;
+use n3b\Bundle\Util\HttpFoundation\StreamResponse\StreamWriterWrapper;
+use PHPExcel;
+
 /**
  *
  */
 class ExcelContainer
 {
-
     /**
-     * @var
+     * @var PHPExcel
      */
     public $excelObj;
 
     /**
-     * @var
+     * @var StreamWriterWrapper
      */
     protected $stream_writer;
 
     /**
-     * @var
+     * @var StreamResponse
      */
     protected $response_service;
 
     /**
-     *
-     *
-     * @param $excelObj
-     * @param $stream_writer
-     * @param $response_service
+     * @param PHPExcel              $excelObj
+     * @param StreamWriterWrapper   $stream_writer
+     * @param StreamResponse        $response_service
      */
     public function __construct($excelObj, $stream_writer, $response_service)
     {
