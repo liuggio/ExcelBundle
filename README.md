@@ -99,11 +99,9 @@ If you want to write
 
 ``` php
    // create MS Excel5
-   $excelService = $this->get('xls.service_xls5');
-   // create pdf
-   $this->get('xls.service_pdf');
+   $excelService = $this->get('xls.excel5');
    // create MS Excel 2007
-   $this->get('xls.service_xls2007');
+   $this->get('xls.excel2007');
 
 ```
 
@@ -111,7 +109,7 @@ If you want to write
 If you want to read xls
 
 ``` php
-    $excelObj = $this->get('xls.load_xls5')->load($filename);
+    $excelService = $this->get('xls.excel5')->load($filename);
 
 ```
 
@@ -136,8 +134,8 @@ class DefaultController extends Controller
     public function indexAction($name)
     {
         // ask the service for a Excel5
-        $excelService = $this->get('xls.service_xls5');
-        // or $this->get('xls.service_pdf');
+        $excelService = $this->get('xls.excel5');
+        // or $this->get('xls.excel5')->load($filename);
         // or create your own is easy just modify services.yml
 
 
@@ -176,9 +174,9 @@ With the right writer (e.g. PHPExcel_Writer_Excel5) you could also write the out
     
 	public function indexAction($name)
     {
-        $excelService = $this->get('xls.service_xls5');	
+        $excelService = $this->get('xls.excel5');	
 
-        //...create php excel object
+        //...load and modify or create php excel object
 
         $excelService->getStreamWriter()->write( $filename );
     }
