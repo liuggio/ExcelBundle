@@ -164,7 +164,7 @@ class DefaultController extends Controller
         // If you are using a https connection, you have to set those two headers and use sendHeaders() for compatibility with IE <9
         $response->headers->set('Pragma', 'public');
         $response->headers->set('Cache-Control', 'maxage=1');
-        $response->sendHeaders();
+
         return $response;        
     }
 }
