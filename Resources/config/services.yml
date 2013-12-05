@@ -2,92 +2,24 @@ parameters:
     xls.phpexcel.class: PHPExcel
     xls.stream_writer.class: n3b\Bundle\Util\HttpFoundation\StreamResponse\StreamWriterWrapper
     xls.stream_response.class: n3b\Bundle\Util\HttpFoundation\StreamResponse\StreamResponse
-    xls.factory.class: "PHPExcel_IOFactory"
-    xls.factory5.method: "PHPExcel_Writer_Excel5"
-    xls.factory2007.method: "PHPExcel_Writer_Excel2007"
-    xls.factoryOOCalc.method: "PHPExcel_Reader_OOCalc"
-    xls.factoryPDF.method: "PHPExcel_Writer_PDF"
-    xls.factory.write_method: "save"
     xls.service.class: Liuggio\ExcelBundle\Service\ExcelContainer
 
 services:
     xls.phpexcel:
-        class: %xls.phpexcel.class%
+      class: %xls.phpexcel.class%
 
-#factory for xls5
-    xls.factory_xls5:
-        class: %xls.factory5.method%
-        factory_class: %xls.factory.class%
-        factory_method: createWriter
-        arguments: [@xls.phpexcel, "Excel5"]
+    xls.service:
+      class: Liuggio\ExcelBundle\Service\Excel
+      arguments: [ "@xls.phpexcel", %xls.stream_writer.class%, %xls.stream_response.class% ]
 
-#factory for xls2007
-    xls.factory_xls2007:
-        class: %xls.factory2007.method%
-        factory_class: %xls.factory.class%
-        factory_method: createWriter
-        arguments: [@xls.phpexcel, "Excel2007"]
-        
-#reader for xls5
-    xls.load_xls5:
-        class: %xls.factory5.method%
-        factory_class: %xls.factory.class%
-        factory_method: createReader
-        arguments: ["Excel5"]
-
-#reader for xls2007
-    xls.load_xls2007:
-        class: %xls.factory2007.method%
-        factory_class: %xls.factory.class%
-        factory_method: createReader
-        arguments: ["Excel2007"]
-
-#reader for oOCalc
-    xls.load_OOCalc:
-        class: %xls.factoryOOCalc.method%
-        factory_class: %xls.factory.class%
-        factory_method: createReader
-        arguments: ["OOCalc"]
-
-        
-#setter injection
-    xls.stream_writer_output_xls5:
-        class: %xls.stream_writer.class%
-        arguments: ["php://output"]
-        calls:
-            - [ setWriter, [  @xls.factory_xls5, %xls.factory.write_method% ] ]
-
-    xls.stream_writer_output_xls2007:
-        class: %xls.stream_writer.class%
-        arguments: ["php://output"]
-        calls:
-            - [ setWriter, [ @xls.factory_xls2007, %xls.factory.write_method% ] ]
-
-#service to call
-    xls.service_xls5:
-        class: %xls.service.class%
-        arguments: [@xls.phpexcel, @xls.stream_writer_output_xls5, %xls.stream_response.class%]
-
-#service to call for xls2007
-    xls.service_xls2007:
-        class: %xls.service.class%
-        arguments: [@xls.phpexcel, @xls.stream_writer_output_xls2007, %xls.stream_response.class%]
-        
-
-# if you need to create another PHP object
-#factory for another format
-    xls.factory_pdf:
-        class: %xls.factoryPDF.method%
-        factory_class: %xls.factory.class%
-        factory_method: createWriter
-        arguments: [@xls.phpexcel, "PDF"]
-#setter injection
-    xls.stream_writer_output_PDF:
-        class: %xls.stream_writer.class%
-        arguments: ["php://output"]
-        calls:
-            - [ setWriter, [  @xls.factory_pdf, %xls.factory.write_method% ] ]
-#service to call
-    xls.service_pdf:
-        class: %xls.service.class%
-        arguments: [@xls.phpexcel, @xls.stream_writer_output_PDF, %xls.stream_response.class%]
+    xls.excel5:
+      class: Liuggio\ExcelBundle\Service\Excel
+      arguments: [ "@xls.phpexcel", %xls.stream_writer.class%, %xls.stream_response.class% ]
+      calls:
+        - [ setType, [ "Excel5" ] ]
+    
+    xls.excel2007:
+      class: Liuggio\ExcelBundle\Service\Excel
+      arguments: [ "@xls.phpexcel", %xls.stream_writer.class%, %xls.stream_response.class% ]
+      calls:
+        - [ setType, [ "Excel2007" ] ]
