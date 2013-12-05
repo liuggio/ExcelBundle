@@ -17,7 +17,7 @@ services:
       arguments: [ "@xls.phpexcel", %xls.stream_writer.class%, %xls.stream_response.class% ]
       calls:
         - [ setType, [ "Excel5" ] ]
-    
+
     xls.excel2007:
       class: Liuggio\ExcelBundle\Service\Excel
       arguments: [ "@xls.phpexcel", %xls.stream_writer.class%, %xls.stream_response.class% ]

@@ -26,5 +26,10 @@
             "Liuggio\\ExcelBundle": ""
         }
     },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.0.x-dev"
+        }
+    },
     "target-dir": "Liuggio/ExcelBundle"
 }

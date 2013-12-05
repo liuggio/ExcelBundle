@@ -17,32 +17,30 @@ class Excel
     private $writer;
     private $types = array('Excel5','Excel2007','PDF');
 
-    protected $stream_response_class;
-    protected $stream_writer_class;
+    protected $streamResponseClass;
+    protected $streamWriterClass;
 
-    public function __construct(\PHPExcel $excelObj, $writer_class, $stream_response_class)
+    public function __construct(\PHPExcel $excelObj, $writerClass, $streamResponseClass)
     {
         $this->excelObj              = $excelObj;
-        $this->stream_response_class = $stream_response_class;
-        $this->stream_writer_class   = $writer_class;
+        $this->streamResponseClass = $streamResponseClass;
+        $this->streamWriterClass   = $writerClass;
     }
-    
+
     public function load($path)
     {
         if(!$this->reader)
             $this->reader = \PHPExcel_IOFactory::createReader($this->type);
-        
-        try 
-        {
+
+        try {
             $this->excelObj = $this->reader->load($path);
+
             return true;
-        }
-        catch(\Exception $e)
-        {
+        } catch (\Exception $e) {
             return false;
         }
     }
-    
+
     public function getType()
     {
         return $this->type;
@@ -52,9 +50,9 @@ class Excel
     {
         if(!in_array($type, $this->types))
             throw new \InvalidArgumentException();
-        
+
         $this->type = $type;
-        
+
         return $this;
     }
 
@@ -64,15 +62,15 @@ class Excel
             $this->setType($type);
 
         $this->writer = \PHPExcel_IOFactory::createWriter($this->excelObj, $this->type);
-        
+
         return $this->writer;
     }
-    
+
     public function getStreamWriter()
     {
-        $stream_writer = new $this->stream_writer_class("php://output");
+        $stream_writer = new $this->streamWriterClass("php://output");
         $stream_writer->setWriter($this->getWriter(),'save');
-        
+
         return $stream_writer;
     }
 
@@ -83,7 +81,7 @@ class Excel
      */
     public function getResponse()
     {
-        return new $this->stream_response_class($this->getStreamWriter());
+        return new $this->streamResponseClass($this->getStreamWriter());
     }
 
 }

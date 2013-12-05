@@ -1,7 +1,9 @@
 Symfony2 Excel bundle
 ============
 
-[![Total Downloads](https://poser.pugx.org/liuggio/ExcelBundle/downloads.png)](https://packagist.org/packages/liuggio/ExcelBundle) [![Latest Stable Version](https://poser.pugx.org/liuggio/ExcelBundle/v/stable.png)](https://packagist.org/packages/liuggio/ExcelBundle)
+[![Total Downloads](https://poser.pugx.org/liuggio/ExcelBundle/downloads.png)](https://packagist.org/packages/liuggio/ExcelBundle)
+[![Latest Stable Version](https://poser.pugx.org/liuggio/ExcelBundle/v/stable.png)](https://packagist.org/packages/liuggio/ExcelBundle)
+[![Latest Unstable Version](https://poser.pugx.org/liuggio/ExcelBundle/v/unstable.png)](https://packagist.org/packages/liuggio/ExcelBundle)
 
 This bundle permits you to create an easily modifiable excel object.
 This is just a dependency injection that links
@@ -33,7 +35,7 @@ This master is up-to-date to the symfony/symfony master actually on 2.1
 
 ``` 
     "require" : {
-        "liuggio/excelbundle": ">=1.0.4",
+        "liuggio/excelbundle": "@dev",
     }
 ``` 
  
@@ -47,41 +49,6 @@ This master is up-to-date to the symfony/symfony master actually on 2.1
     );
 ```
 
-## INSTALLATION with deps file
-
-1  Add to the following to your `deps` file, then run `php bin/vendors install`
-
-``` yaml
-[PHPExcel]
-    git=http://github.com/PHPOffice/PHPExcel.git
-    target=/phpexcel
-    version=origin/master
-
-[n3bStreamresponse]
-    git=git://github.com/liuggio/Symfony2-StreamResponse.git
-    target=n3b/src/n3b/Bundle/Util/HttpFoundation/StreamResponse
-
-[LiuggioExcelBundle]
-    git=https://github.com/liuggio/ExcelBundle.git
-    target=/bundles/Liuggio/ExcelBundle
-``` 
-
-2  Register the namespaces and prefixes in `app/autoload.php`:
-
-``` php
-    $loader->registerNamespaces(array(
-        // ...
-        'n3b\\Bundle\\Util\\HttpFoundation\\StreamResponse' => __DIR__.'/../vendor/n3b/src',
-        'Liuggio'          => __DIR__.'/../vendor/bundles',
-    ));
-    $loader->registerPrefixes(array(
-        // ...
-        'PHPExcel'         => __DIR__.'/../vendor/phpexcel/Classes',
-    ));
-
-```
- 
-
 3 Enable the bundle in `app/AppKernel.php`
 
 ``` php
@@ -90,7 +57,7 @@ This master is up-to-date to the symfony/symfony master actually on 2.1
         new Liuggio\ExcelBundle\LiuggioExcelBundle(),
     );
 ```
- 
+
 
 
 ## AVAILABLE SERVICES
@@ -105,16 +72,12 @@ If you want to write
 
 ```
 
-
 If you want to read xls
 
 ``` php
     $excelService = $this->get('xls.excel5')->load($filename);
 
 ```
-
-
-
 
 ## USAGE
 
@@ -130,14 +93,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
-    
+
     public function indexAction($name)
     {
         // ask the service for a Excel5
         $excelService = $this->get('xls.excel5');
         // or $this->get('xls.excel5')->load($filename);
         // or create your own is easy just modify services.yml
-
 
         // create the object see http://phpexcel.codeplex.com documentation
         $excelService->excelObj->getProperties()->setCreator("Maarten Balliauw")
@@ -153,16 +115,16 @@ class DefaultController extends Controller
         $excelService->excelObj->getActiveSheet()->setTitle('Simple');
         // Set active sheet index to the first sheet, so Excel opens this as the first sheet
         $excelService->excelObj->setActiveSheetIndex(0);
- 
+
         //create the response
         $response = $excelService->getResponse();
         $response->headers->set('Content-Type', 'text/vnd.ms-excel; charset=utf-8');
         $response->headers->set('Content-Disposition', 'attachment;filename=stdream2.xls');
-        
+
         // If you are using a https connection, you have to set those two headers and use sendHeaders() for compatibility with IE <9
         $response->headers->set('Pragma', 'public');
         $response->headers->set('Cache-Control', 'maxage=1');
-
+        $response->sendHeaders();
         return $response;        
     }
 }
