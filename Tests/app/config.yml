@@ -7,3 +7,6 @@ framework:
         storage_id: session.storage.mock_file
     profiler:
         collect: false
+
+parameters:
+    xls_fixture_absolute_path: "%kernel.root_dir%/fixture/file.xls"

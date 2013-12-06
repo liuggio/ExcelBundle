@@ -36,4 +36,19 @@ class FakeControllerTest extends WebTestCase
 
         $this->assertFileExists($content, sprintf('file %s should exist', $content));
     }
+
+    public function testReadAndSaveAction()
+    {
+        $client = static::createClient();
+
+        $client->request('GET', '/fake/read');
+
+        $this->assertEquals(201, $client->getResponse()->getStatusCode(), $client->getResponse()->getContent());
+
+        $content = $client->getResponse()->getContent();
+
+        $this->assertStringEndsWith('.xls', $content);
+
+        $this->assertFileExists($content, sprintf('file %s should exist', $content));
+    }
 }
