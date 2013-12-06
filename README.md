@@ -68,7 +68,7 @@ $writer->save('file.xls');
 
 ```php
 $writer = $this->get('phpexcel')->createWriter($phpExcelObject, 'Excel5');
-$writer->save('file.xls');
+$response = $writer->createStreamedResponse($writer);
 ```
 ## Not Only 'Excel5'
 
@@ -146,4 +146,4 @@ the [list of contributors](https://github.com/liuggio/ExcelBundle/graphs/contrib
 1. fork the project
 2. clone the repo
 3. get the coding standard fixer: `wget http://cs.sensiolabs.org/get/php-cs-fixer.phar`
-4. before the PullRequest you should run the coding standard fixer with `php php-cs-fixer.phar fix -v fix .`
+4. before the PullRequest you should run the coding standard fixer with `php php-cs-fixer.phar fix -v .`
