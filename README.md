@@ -1,55 +1,26 @@
 Symfony2 Excel bundle
 ============
 
+[![Build Status](https://travis-ci.org/liuggio/ExcelBundle.png)](https://travis-ci.org/liuggio/ExcelBundle)
 [![Total Downloads](https://poser.pugx.org/liuggio/ExcelBundle/downloads.png)](https://packagist.org/packages/liuggio/ExcelBundle)
 [![Latest Stable Version](https://poser.pugx.org/liuggio/ExcelBundle/v/stable.png)](https://packagist.org/packages/liuggio/ExcelBundle)
 [![Latest Unstable Version](https://poser.pugx.org/liuggio/ExcelBundle/v/unstable.png)](https://packagist.org/packages/liuggio/ExcelBundle)
 
 This bundle permits you to create an easily modifiable excel object.
-This is just a dependency injection that links
 
+You should know that csv is faster so I encourage you to use the built-in function for csv: http://php.net/manual-lookup.php?pattern=csv&lang=en&scope=quickref
 
-3 Objects:
+## Installation
 
-- The container in this bundle, 
+**1**  Add to composer.json to the `require` key
 
-- The StreamWrapper in the n3bStreamresponse
-
-- A Writer.
- 
-
-You could create your own writer extending  ``n3b\Bundle\Util\HttpFoundation\StreamResponse\StreamWriterInterface`` or you could use the great PHPExcel library. With PHPExcel you can create xls, ods, pdf and more.
-
-You have to know that csv is faster so I encourage you to use the built-in function for csv: http://it.php.net/manual-lookup.php?pattern=csv&lang=en&scope=quickref
-
-## Migration
-
-In order to follow the naming convention  https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md  all the liuggio namespaces are migrated to Liuggio.
-
-This master is up-to-date to the symfony/symfony master actually on 2.1
-
-
-## INSTALLATION with COMPOSER 
-
-1  Add to composer.json to the `require` key  
-
-``` 
+``` yml
     "require" : {
-        "liuggio/excelbundle": "@dev",
+        "liuggio/excelbundle": "2.0.x-dev",
     }
 ``` 
- 
 
-2 Register the bundle in ``app/AppKernel.php``
-
-``` php
-    $bundles = array(
-        // ...
-        new Liuggio\ExcelBundle\LiuggioExcelBundle(),
-    );
-```
-
-3 Enable the bundle in `app/AppKernel.php`
+**2** Register the bundle in ``app/AppKernel.php``
 
 ``` php
     $bundles = array(
@@ -58,38 +29,28 @@ This master is up-to-date to the symfony/symfony master actually on 2.1
     );
 ```
 
+## Services
 
-
-## AVAILABLE SERVICES
-
-If you want to write
+The list of the services are listed in `/Resources/config/services.yml`.
 
 ``` php
-   // create MS Excel5
-   $excelService = $this->get('xls.excel5');
-   // create MS Excel 2007
-   $this->get('xls.excel2007');
-
+// create MS Excel5
+$this->get('xls.excel5');
+// create MS Excel 2007
+$this->get('xls.excel2007');
+// read file
+$excelService = $this->get('xls.excel5')->load($filename);
 ```
 
-If you want to read xls
+## Example
+
+Create a controller in your bundle,
+there's a working example at `Tests/app/Controller/FakeController.php`.
 
 ``` php
-    $excelService = $this->get('xls.excel5')->load($filename);
-
-```
-
-## USAGE
-
-Create a controller in your bundle
-
-
-``` php
-
 namespace YOURNAME\YOURBUNDLE\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 
 class DefaultController extends Controller
 {
@@ -124,31 +85,23 @@ class DefaultController extends Controller
         // If you are using a https connection, you have to set those two headers and use sendHeaders() for compatibility with IE <9
         $response->headers->set('Pragma', 'public');
         $response->headers->set('Cache-Control', 'maxage=1');
-        $response->sendHeaders();
+
         return $response;        
     }
 }
-
 ```
 
-With the right writer (e.g. PHPExcel_Writer_Excel5) you could also write the output to a file:
+With the correct writer (e.g. PHPExcel_Writer_Excel5) you could also write the output to a file:
+
 ``` php
     
 	public function indexAction($name)
     {
         $excelService = $this->get('xls.excel5');	
-
         //...load and modify or create php excel object
-
-        $excelService->getStreamWriter()->write( $filename );
+        $excelService->getStreamWriter()->write($filename);
     }
 ```
-
-
-## ADVANCED USE
-
-If you need to, see and modify ``Liuggio\ExcelBundle\Resources\config\services.yml``
-
 
 ## Contributors
 
@@ -163,6 +116,8 @@ If you need to, see and modify ``Liuggio\ExcelBundle\Resources\config\services.y
 @isqad88
 
 @mazenovi
+
+@gnat42
 
 @jochenhilgers
 

@@ -68,14 +68,14 @@ class Excel
 
     public function getStreamWriter()
     {
-        $stream_writer = new $this->streamWriterClass("php://output");
-        $stream_writer->setWriter($this->getWriter(),'save');
+        $streamWriter = new $this->streamWriterClass("php://output");
+        $streamWriter->setWriter($this->getWriter(),'save');
 
-        return $stream_writer;
+        return $streamWriter;
     }
 
     /**
-     *  create the response with the file content
+     * Create the response with the file content.
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */

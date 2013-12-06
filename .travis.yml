@@ -1,0 +1,15 @@
+language: php
+
+php:
+  - "5.3"
+  - "5.4"
+
+before_install:
+ - wget http://cs.sensiolabs.org/get/php-cs-fixer.phar
+
+before_script:
+ - php php-cs-fixer.phar fix -v --dry-run .
+ - composer install --dev
+
+script:
+ - bin/phpunit

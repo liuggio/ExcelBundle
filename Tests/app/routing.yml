@@ -1,0 +1,3 @@
+fake_route:
+    path:      /fake
+    defaults:  { _controller: LiuggioExcelBundle:Fake:index }

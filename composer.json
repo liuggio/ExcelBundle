@@ -21,6 +21,16 @@
         "irongit/symfony2-stream-response": ">=1.0",
         "phpoffice/phpexcel": "1.7.9"
     },
+    "require-dev": {
+        "phpunit/PHPUnit": "3.7.*",
+        "symfony/finder": "~2.0",
+        "symfony/form": "~2.3",
+        "symfony/class-loader": "~2.1",
+        "symfony/validator": "~2.1",
+        "symfony/browser-kit": "~2.1",
+        "sensio/framework-extra-bundle": "~2.3"
+    },
+
     "autoload": {
         "psr-0": {
             "Liuggio\\ExcelBundle": ""
@@ -31,5 +41,8 @@
             "dev-master": "2.0.x-dev"
         }
     },
-    "target-dir": "Liuggio/ExcelBundle"
+    "target-dir": "Liuggio/ExcelBundle",
+    "config": {
+        "bin-dir": "bin"
+    }
 }

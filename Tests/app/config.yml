@@ -1,0 +1,9 @@
+# Tests/Controller/App/config.yml
+framework:
+    secret:          secret
+    test: ~
+    router:          { resource: "%kernel.root_dir%/routing.yml" }
+    session:
+        storage_id: session.storage.mock_file
+    profiler:
+        collect: false
