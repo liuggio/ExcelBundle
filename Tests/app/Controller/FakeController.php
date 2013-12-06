@@ -9,11 +9,15 @@ class FakeController extends Controller
 {
     public function streamAction()
     {
-        $response = $this->createXSLObject()->createStreamedResponse();
-
+        // create an empty object
+        $phpExcelObject = $this->createXSLObject();
+        // create the writer
+        $writer = $this->get('phpexcel')->createWriter($phpExcelObject, 'Excel5');
+        // create the response
+        $response = $this->get('phpexcel')->createStreamedResponse($writer);
+        // adding headers
         $response->headers->set('Content-Type', 'text/vnd.ms-excel; charset=utf-8');
         $response->headers->set('Content-Disposition', 'attachment;filename=stream-file.xls');
-        // If you are using a https connection, you have to set those two headers and use sendHeaders() for compatibility with IE <9
         $response->headers->set('Pragma', 'public');
         $response->headers->set('Cache-Control', 'maxage=1');
 
@@ -22,34 +26,53 @@ class FakeController extends Controller
 
     public function storeAction()
     {
-        $excelService = $this->createXSLObject();
-        //create the response
-        $writer = $excelService->getWriter();
-
+        // create an empty object
+        $phpExcelObject = $this->createXSLObject();
+        // create the writer
+        $writer = $this->get('phpexcel')->createWriter($phpExcelObject, 'Excel5');
         $filename = tempnam(sys_get_temp_dir(), 'xls-') . '.xls';
+        // create filename
         $writer->save($filename);
 
         return new Response($filename, 201);
     }
 
+    public function readAndSaveAction()
+    {
+        $filename = $this->container->getParameter('xls_fixture_absolute_path');
+        // create an object from a filename
+        $phpExcelObject = $this->createXSLObject($filename);
+        // create the writer
+        $writer = $this->get('phpexcel')->createWriter($phpExcelObject, 'Excel5');
+        $filename = tempnam(sys_get_temp_dir(), 'xls-') . '.xls';
+        // create filename
+        $writer->save($filename);
+
+        return new Response($filename, 201);
+    }
+
+    /**
+     * utility class
+     * @return mixed
+     */
     private function createXSLObject()
     {
-        $excelService = $this->get('xls.excel5');
+        $phpExcelObject = $this->get('phpexcel')->createPHPExcelObject();
 
-        $excelService->excelObj->getProperties()->setCreator("liuggio")
+        $phpExcelObject->getProperties()->setCreator("liuggio")
             ->setLastModifiedBy("Giulio De Donato")
             ->setTitle("Office 2005 XLSX Test Document")
             ->setSubject("Office 2005 XLSX Test Document")
             ->setDescription("Test document for Office 2005 XLSX, generated using PHP classes.")
             ->setKeywords("office 2005 openxml php")
             ->setCategory("Test result file");
-        $excelService->excelObj->setActiveSheetIndex(0)
+        $phpExcelObject->setActiveSheetIndex(0)
             ->setCellValue('A1', 'Hello')
             ->setCellValue('B2', 'world!');
-        $excelService->excelObj->getActiveSheet()->setTitle('Simple');
+        $phpExcelObject->getActiveSheet()->setTitle('Simple');
         // Set active sheet index to the first sheet, so Excel opens this as the first sheet
-        $excelService->excelObj->setActiveSheetIndex(0);
+        $phpExcelObject->setActiveSheetIndex(0);
 
-        return $excelService;
+        return $phpExcelObject;
     }
 }

@@ -1,23 +1,6 @@
 parameters:
-    xls.phpexcel.class: PHPExcel
-    xls.service.class: Liuggio\ExcelBundle\Service\ExcelContainer
+    phpexcel.class:  Liuggio\ExcelBundle\Factory
 
 services:
-    xls.phpexcel:
-      class: %xls.phpexcel.class%
-
-    xls.service:
-      class: Liuggio\ExcelBundle\Service\Excel
-      arguments: ["@xls.phpexcel"]
-
-    xls.excel5:
-      class: Liuggio\ExcelBundle\Service\Excel
-      arguments: ["@xls.phpexcel" ]
-      calls:
-        - [ setType, [ "Excel5" ] ]
-
-    xls.excel2007:
-      class: Liuggio\ExcelBundle\Service\Excel
-      arguments: ["@xls.phpexcel"]
-      calls:
-        - [ setType, [ "Excel2007" ] ]
+    phpexcel:
+      class: %phpexcel.class%
