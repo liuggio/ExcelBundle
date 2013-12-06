@@ -2,8 +2,10 @@
 
 namespace Liuggio\ExcelBundle\Service;
 
+use Symfony\Component\HttpFoundation\StreamedResponse;
+
 /**
- * Description of Excel
+ * Excel Service.
  *
  * @author gnat
  */
@@ -66,22 +68,35 @@ class Excel
         return $this->writer;
     }
 
-    public function getStreamWriter()
-    {
-        $streamWriter = new $this->streamWriterClass("php://output");
-        $streamWriter->setWriter($this->getWriter(),'save');
-
-        return $streamWriter;
-    }
-
     /**
      * Create the response with the file content.
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param int   $status
+     * @param array $headers
+     *
+     * @return StreamedResponse
+     */
+    public function createStreamedResponse($status = 200, $headers = array())
+    {
+        $writer = $this->getWriter();
+        return  new StreamedResponse(
+            function () use ($writer) {
+                $writer->save('php://output');
+            },
+            $status,
+            $headers
+        );
+
+    }
+
+    /**
+     * @deprecated deprecated since version 2.0
+     *
+     * @return StreamedResponse
      */
     public function getResponse()
     {
-        return new $this->streamResponseClass($this->getStreamWriter());
+        return $this->createStreamedResponse(200);
     }
 
 }

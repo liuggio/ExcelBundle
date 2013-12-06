@@ -1,3 +1,7 @@
-fake_route:
-    path:      /fake
-    defaults:  { _controller: LiuggioExcelBundle:Fake:index }
+fake_route_stream:
+    path:      /fake/stream
+    defaults:  { _controller: LiuggioExcelBundle:Fake:stream }
+
+fake_route_store:
+    path:      /fake/store
+    defaults:  { _controller: LiuggioExcelBundle:Fake:store }
