@@ -19,14 +19,9 @@ class Excel
     private $writer;
     private $types = array('Excel5','Excel2007','PDF');
 
-    protected $streamResponseClass;
-    protected $streamWriterClass;
-
-    public function __construct(\PHPExcel $excelObj, $writerClass, $streamResponseClass)
+    public function __construct(\PHPExcel $excelObj)
     {
         $this->excelObj              = $excelObj;
-        $this->streamResponseClass = $streamResponseClass;
-        $this->streamWriterClass   = $writerClass;
     }
 
     public function load($path)
@@ -79,6 +74,7 @@ class Excel
     public function createStreamedResponse($status = 200, $headers = array())
     {
         $writer = $this->getWriter();
+
         return  new StreamedResponse(
             function () use ($writer) {
                 $writer->save('php://output');

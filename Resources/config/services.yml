@@ -1,7 +1,5 @@
 parameters:
     xls.phpexcel.class: PHPExcel
-    xls.stream_writer.class: n3b\Bundle\Util\HttpFoundation\StreamResponse\StreamWriterWrapper
-    xls.stream_response.class: n3b\Bundle\Util\HttpFoundation\StreamResponse\StreamResponse
     xls.service.class: Liuggio\ExcelBundle\Service\ExcelContainer
 
 services:
@@ -10,16 +8,16 @@ services:
 
     xls.service:
       class: Liuggio\ExcelBundle\Service\Excel
-      arguments: [ "@xls.phpexcel", %xls.stream_writer.class%, %xls.stream_response.class% ]
+      arguments: ["@xls.phpexcel"]
 
     xls.excel5:
       class: Liuggio\ExcelBundle\Service\Excel
-      arguments: [ "@xls.phpexcel", %xls.stream_writer.class%, %xls.stream_response.class% ]
+      arguments: ["@xls.phpexcel" ]
       calls:
         - [ setType, [ "Excel5" ] ]
 
     xls.excel2007:
       class: Liuggio\ExcelBundle\Service\Excel
-      arguments: [ "@xls.phpexcel", %xls.stream_writer.class%, %xls.stream_response.class% ]
+      arguments: ["@xls.phpexcel"]
       calls:
         - [ setType, [ "Excel2007" ] ]
