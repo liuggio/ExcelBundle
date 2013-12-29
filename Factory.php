@@ -32,7 +32,7 @@ class Factory
             return $phpExcelObject;
         }
 
-        return call_user_func(array($this->phpExcelIO, 'load'), array($filename));
+        return call_user_func(array($this->phpExcelIO, 'load'), $filename);
     }
 
     /**
