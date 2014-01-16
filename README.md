@@ -68,7 +68,7 @@ $writer->save('file.xls');
 
 ```php
 $writer = $this->get('phpexcel')->createWriter($phpExcelObject, 'Excel5');
-$response = $writer->createStreamedResponse($writer);
+$response = $this->get('phpexcel')->createStreamedResponse($writer);
 ```
 ## Not Only 'Excel5'
 
