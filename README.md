@@ -1,6 +1,8 @@
 Symfony2 Excel bundle
 ============
 
+This bundle permits you to create, modify and read excel objects.
+
 [![Build Status](https://travis-ci.org/liuggio/ExcelBundle.png)](https://travis-ci.org/liuggio/ExcelBundle)
 [![Total Downloads](https://poser.pugx.org/liuggio/ExcelBundle/downloads.png)](https://packagist.org/packages/liuggio/ExcelBundle)
 [![Latest Stable Version](https://poser.pugx.org/liuggio/ExcelBundle/v/stable.png)](https://packagist.org/packages/liuggio/ExcelBundle)
@@ -10,9 +12,6 @@ Symfony2 Excel bundle
 
 [![License](https://poser.pugx.org/liuggio/ExcelBundle/license.png)](LICENSE)
 
-
-
-This bundle permits you to create an easily modifiable excel object.
 
 ## Version 2
 
