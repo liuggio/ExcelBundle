@@ -6,6 +6,12 @@ Symfony2 Excel bundle
 [![Latest Stable Version](https://poser.pugx.org/liuggio/ExcelBundle/v/stable.png)](https://packagist.org/packages/liuggio/ExcelBundle)
 [![Latest Unstable Version](https://poser.pugx.org/liuggio/ExcelBundle/v/unstable.png)](https://packagist.org/packages/liuggio/ExcelBundle)
 
+## License
+
+[![License](https://poser.pugx.org/liuggio/ExcelBundle/license.png)](LICENSE)
+
+
+
 This bundle permits you to create an easily modifiable excel object.
 
 ## Version 2
@@ -147,3 +153,5 @@ the [list of contributors](https://github.com/liuggio/ExcelBundle/graphs/contrib
 2. clone the repo
 3. get the coding standard fixer: `wget http://cs.sensiolabs.org/get/php-cs-fixer.phar`
 4. before the PullRequest you should run the coding standard fixer with `php php-cs-fixer.phar fix -v .`
+
+
