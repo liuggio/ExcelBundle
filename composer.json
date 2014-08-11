@@ -21,7 +21,7 @@
         "phpoffice/phpexcel": "~1.8.0"
     },
     "require-dev": {
-        "phpunit/PHPUnit": "3.7.*",
+        "phpunit/phpunit": ">=3.7",
         "symfony/finder": "~2.0",
         "symfony/form": "~2.1",
         "symfony/class-loader": "~2.1",
