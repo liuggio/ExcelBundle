@@ -37,16 +37,11 @@ class Factory
 
     /**
      * Create a worksheet drawing
-     *
-     * @param 
-     *
-     *
      * @return \PHPExcel_Worksheet_Drawing
      */
     public function createPHPExcelWorksheetDrawing()
     {
             $Object = new \PHPExcel_Worksheet_Drawing();
-
             return $Object;
     }
 
