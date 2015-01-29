@@ -36,6 +36,17 @@ class Factory
     }
 
     /**
+     * Create a worksheet drawing
+     * @return \PHPExcel_Worksheet_Drawing
+     */
+    public function createPHPExcelWorksheetDrawing()
+    {
+            $Object = new \PHPExcel_Worksheet_Drawing();
+            return $Object;
+    }
+
+
+    /**
      * Create a writer given the PHPExcelObject and the type,
      *   the type coul be one of PHPExcel_IOFactory::$_autoResolveClasses
      *

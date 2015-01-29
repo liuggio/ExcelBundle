@@ -75,6 +75,24 @@ $writer->save('file.xls');
 $writer = $this->get('phpexcel')->createWriter($phpExcelObject, 'Excel5');
 $response = $this->get('phpexcel')->createStreamedResponse($writer);
 ```
+
+- Create a Excel file with an image:
+
+```php
+$writer = $this->get('phpexcel')->createPHPExcelObject();
+$writer->setActiveSheetIndex(0);
+$activesheet = $writer->getActiveSheet();
+
+$drawingobject = $this->get('phpexcel')->createPHPExcelWorksheetDrawing();
+$drawingobject->setName('Image name');
+$drawingobject->setDescription('Image description');
+$drawingobject->setPath('/path/to/image');
+$drawingobject->setHeight(60);
+$drawingobject->setOffsetY(20);
+$drawingobject->setCoordinates('A1');
+$drawingobject->setWorksheet($activesheet)
+```
+
 ## Not Only 'Excel5'
 
 The list of the types are:
