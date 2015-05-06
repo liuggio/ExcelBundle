@@ -45,6 +45,20 @@ class Factory
             return $Object;
     }
 
+    /**
+     * Create a reader given the type,
+     *   the type coul be one of PHPExcel_IOFactory::$_autoResolveClasses
+     *
+     * @param string $type
+     *
+     *
+     * @return \PHPExcel_Reader_IReader
+     */
+    public function createReader($type = 'Excel5')
+    {
+        return call_user_func(array($this->phpExcelIO, 'createReader'), $type);
+    }
+
 
     /**
      * Create a writer given the PHPExcelObject and the type,
