@@ -49,7 +49,7 @@ class Factory
      * Create a reader given the type,
      *   the type coul be one of PHPExcel_IOFactory::$_autoResolveClasses
      *
-     * @param string    $type
+     * @param string $type
      *
      *
      * @return \PHPExcel_Reader_IReader
