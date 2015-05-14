@@ -34,7 +34,7 @@ I encourage you to use the built-in function for csv: http://php.net/manual-look
 **1**  Add to composer.json to the `require` key
 
 ``` shell
-    composer require iuggio/excelbundle
+    $composer require iuggio/excelbundle
 ``` 
 
 **2** Register the bundle in ``app/AppKernel.php``
@@ -120,6 +120,7 @@ You could find a lot of examples in the official PHPExcel repository https://git
 namespace YOURNAME\YOURBUNDLE\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 class DefaultController extends Controller
 {
