@@ -14,6 +14,7 @@ class FakeControllerTest extends WebTestCase
 
         $client->getResponse()->sendContent();
         $content = ob_get_contents();
+        ob_clean();
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode(), $client->getResponse()->getContent());
         $this->assertStringStartsWith('attachment;filename=', $client->getResponse()->headers->get('content-disposition'));
