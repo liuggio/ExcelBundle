@@ -3,6 +3,8 @@
 namespace Liuggio\ExcelBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class FakeControllerTest extends WebTestCase
 {
@@ -10,12 +12,12 @@ class FakeControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $client->request('GET', '/fake/stream');
+        $client->request(Request::METHOD_GET, '/fake/stream');
 
         $client->getResponse()->sendContent();
         $content = ob_get_contents();
 
-        $this->assertEquals(200, $client->getResponse()->getStatusCode(), $client->getResponse()->getContent());
+        $this->assertEquals(Response::HTTP_OK, $client->getResponse()->getStatusCode(), $client->getResponse()->getContent());
         $this->assertStringStartsWith('attachment;filename=', $client->getResponse()->headers->get('content-disposition'));
 
         $this->assertNotEmpty($content, 'Response should not be empty');
@@ -26,9 +28,9 @@ class FakeControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $client->request('GET', '/fake/store');
+        $client->request(Request::METHOD_GET, '/fake/store');
 
-        $this->assertEquals(201, $client->getResponse()->getStatusCode(), $client->getResponse()->getContent());
+        $this->assertEquals(Response::HTTP_CREATED, $client->getResponse()->getStatusCode(), $client->getResponse()->getContent());
 
         $content = $client->getResponse()->getContent();
 
@@ -41,9 +43,9 @@ class FakeControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $client->request('GET', '/fake/read');
+        $client->request(Request::METHOD_GET, '/fake/read');
 
-        $this->assertEquals(201, $client->getResponse()->getStatusCode(), $client->getResponse()->getContent());
+        $this->assertEquals(Response::HTTP_CREATED, $client->getResponse()->getStatusCode(), $client->getResponse()->getContent());
 
         $content = $client->getResponse()->getContent();
 

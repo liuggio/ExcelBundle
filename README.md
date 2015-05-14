@@ -33,10 +33,8 @@ I encourage you to use the built-in function for csv: http://php.net/manual-look
 
 **1**  Add to composer.json to the `require` key
 
-``` yml
-    "require" : {
-        "liuggio/excelbundle": "~2.0",
-    }
+``` shell
+    composer require iuggio/excelbundle
 ``` 
 
 **2** Register the bundle in ``app/AppKernel.php``
@@ -150,8 +148,11 @@ class DefaultController extends Controller
         // create the response
         $response = $this->get('phpexcel')->createStreamedResponse($writer);
         // adding headers
+        $dispositionHeader = $response->headers->makeDisposition(
+            ResponseHeaderBag::DISPOSITION_ATTACHMENT,
+            'stream-file.xls'
+        );
         $response->headers->set('Content-Type', 'text/vnd.ms-excel; charset=utf-8');
-        $response->headers->set('Content-Disposition', 'attachment;filename=stream-file.xls');
         $response->headers->set('Pragma', 'public');
         $response->headers->set('Cache-Control', 'maxage=1');
 
@@ -170,5 +171,3 @@ the [list of contributors](https://github.com/liuggio/ExcelBundle/graphs/contrib
 2. clone the repo
 3. get the coding standard fixer: `wget http://cs.sensiolabs.org/get/php-cs-fixer.phar`
 4. before the PullRequest you should run the coding standard fixer with `php php-cs-fixer.phar fix -v .`
-
-
