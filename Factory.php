@@ -42,9 +42,9 @@ class Factory
     public function createPHPExcelWorksheetDrawing()
     {
             $Object = new \PHPExcel_Worksheet_Drawing();
+
             return $Object;
     }
-
 
     /**
      * Create a writer given the PHPExcelObject and the type,
