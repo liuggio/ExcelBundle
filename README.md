@@ -34,7 +34,7 @@ I encourage you to use the built-in function for csv: http://php.net/manual-look
 **1**  Add to composer.json to the `require` key
 
 ``` shell
-    $composer require iuggio/excelbundle
+    $composer require liuggio/excelbundle
 ``` 
 
 **2** Register the bundle in ``app/AppKernel.php``
