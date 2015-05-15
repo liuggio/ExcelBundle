@@ -59,6 +59,8 @@ class FakeController extends Controller
     {
         $phpExcelObject = $this->get('phpexcel')->createPHPExcelObject();
 
+        $htmlHelper = $this->get('phpexcel')->createHelperHTML();
+
         $phpExcelObject->getProperties()->setCreator("liuggio")
             ->setLastModifiedBy("Giulio De Donato")
             ->setTitle("Office 2005 XLSX Test Document")
@@ -68,7 +70,8 @@ class FakeController extends Controller
             ->setCategory("Test result file");
         $phpExcelObject->setActiveSheetIndex(0)
             ->setCellValue('A1', 'Hello')
-            ->setCellValue('B2', 'world!');
+            ->setCellValue('B2', 'world!')
+            ->setCellValue('C3', $htmlHelper->toRichTextObject('<b>In Bold!</b>'));
         $phpExcelObject->getActiveSheet()->setTitle('Simple');
         // Set active sheet index to the first sheet, so Excel opens this as the first sheet
         $phpExcelObject->setActiveSheetIndex(0);

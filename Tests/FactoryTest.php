@@ -22,4 +22,12 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
         $factory =  new Factory();
         $factory->createStreamedResponse($writer)->sendContent();
     }
+
+    public function testCreateHelperHtml()
+    {
+        $factory =  new Factory();
+        $helperHtml = $factory->createHelperHTML();
+        
+        $this->assertInstanceOf('\PHPExcel_Helper_HTML', $helperHtml);
+    }
 }
