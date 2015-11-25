@@ -33,7 +33,7 @@
 
     "autoload": {
         "psr-4": {
-            "Liuggio\\ExcelBundle": ""
+            "Liuggio\\ExcelBundle\\": ""
         }
     },
     "extra": {
