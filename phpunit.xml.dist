@@ -1,5 +1,8 @@
 <!-- phpunit.xml.dist -->
-<phpunit bootstrap="Tests/bootstrap.php">
+<phpunit
+    bootstrap="Tests/bootstrap.php"
+    colors="true"
+>
     <testsuites>
         <testsuite name="ExcelBundle Test Suite">
             <directory>./Tests</directory>
