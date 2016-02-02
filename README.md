@@ -46,6 +46,9 @@ I encourage you to use the built-in function for csv: http://php.net/manual-look
     );
 ```
 
+**3** Clear cache for your environment  to avoid getting «You have requested a non-existent service phpexcel»
+``` php app/console cache:clear --env=dev ```
+
 ## TL;DR
 
 - Create an empty object:
