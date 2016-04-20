@@ -31,10 +31,17 @@
         "sensio/framework-extra-bundle": "~2.3|~3.0"
     },
     "autoload": {
+        "exclude-from-classmap": ["/Tests/"]
         "psr-4": {
             "Liuggio\\ExcelBundle\\": ""
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Liuggio\\ExcelBundle\\": ""
+        }
+    },
+    
     "extra": {
         "branch-alias": {
             "dev-master": "2.0.x-dev"
