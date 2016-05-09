@@ -27,8 +27,7 @@ class Factory
      */
     public function createPHPExcelObject($filename = null)
     {
-        return (null === $filename) ? \PHPExcel() : call_user_func(array($this->phpExcelIO, 'load'), $filename);
-
+        return (null === $filename) ? new \PHPExcel() : call_user_func(array($this->phpExcelIO, 'load'), $filename);
     }
 
     /**
