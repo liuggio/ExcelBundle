@@ -25,15 +25,10 @@ class Factory
      *
      * @return \PHPExcel
      */
-    public function createPHPExcelObject($filename =  null)
+    public function createPHPExcelObject($filename = null)
     {
-        if (null === $filename) {
-            $phpExcelObject = new \PHPExcel();
+        return (null === $filename) ? \PHPExcel() : call_user_func(array($this->phpExcelIO, 'load'), $filename);
 
-            return $phpExcelObject;
-        }
-
-        return call_user_func(array($this->phpExcelIO, 'load'), $filename);
     }
 
     /**
@@ -42,9 +37,7 @@ class Factory
      */
     public function createPHPExcelWorksheetDrawing()
     {
-            $Object = new \PHPExcel_Worksheet_Drawing();
-
-            return $Object;
+        return new \PHPExcel_Worksheet_Drawing();
     }
 
     /**
@@ -89,7 +82,6 @@ class Factory
      */
     public function createHelperHTML()
     {
-        $Object = new \PHPExcel_Helper_HTML();
-        return $Object;
+        return new \PHPExcel_Helper_HTML();
     }
 }
