@@ -3,4 +3,4 @@ parameters:
 
 services:
     phpexcel:
-      class: %phpexcel.class%
+      class: '%phpexcel.class%'
