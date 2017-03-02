@@ -48,10 +48,10 @@ class FakeController extends Controller
         $reader = $factory->createReader('Excel5');
         // check that the file can be read
         $canread = $reader->canRead($filename);
-        // chack that an empty temporary file cannot be read
-        $someFile = tmpfile();
-        $cannotread = $reader->canRead(stream_get_meta_data($someFile)['uri']);
-        fclose($someFile);
+        // check that an empty temporary file cannot be read
+        $someFile = tempnam($this->getParameter('kernel.root_dir'), "tmp");
+        $cannotread = $reader->canRead($someFile);
+        unlink($someFile);
         // load the excel file
         $phpExcelObject = $reader->load($filename);
         // read some data
