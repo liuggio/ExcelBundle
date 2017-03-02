@@ -25,6 +25,23 @@ class FakeControllerTest extends WebTestCase
         $this->assertNotNull($content, 'Response should not be null');
     }
 
+    public function testReaderAction()
+    {
+        $client = static::createClient();
+
+        $client->request(Request::METHOD_GET, '/fake/reader');
+
+        $client->getResponse()->sendContent();
+        $content = ob_get_contents();
+        ob_clean();
+
+        $this->assertEquals(Response::HTTP_OK, $client->getResponse()->getStatusCode(), $client->getResponse()->getContent());
+        $this->assertEquals('Hello world!', $client->getResponse()->getContent());
+
+        $this->assertNotEmpty($content, 'Response should not be empty');
+        $this->assertNotNull($content, 'Response should not be null');
+    }
+
     public function testSaveAction()
     {
         $client = static::createClient();

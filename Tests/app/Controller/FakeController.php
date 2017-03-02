@@ -37,6 +37,31 @@ class FakeController extends Controller
         return new Response($filename, 201);
     }
 
+    public function readerAction()
+    {
+        $filename = $this->container->getParameter('xls_fixture_absolute_path');
+        // load the factory
+        /** @var \Liuggio\ExcelBundle\Factory $reader */
+        $factory = $this->get('phpexcel');
+        // create a reader
+        /** @var \PHPExcel_Reader_IReader $reader */
+        $reader = $factory->createReader('Excel5');
+        // check that the file can be read
+        $canread = $reader->canRead($filename);
+        // chack that an empty temporary file cannot be read
+        $someFile = tmpfile();
+        $cannotread = $reader->canRead(stream_get_meta_data($someFile)['uri']);
+        fclose($someFile);
+        // load the excel file
+        $phpExcelObject = $reader->load($filename);
+        // read some data
+        $sheet = $phpExcelObject->getActiveSheet();
+        $hello = $sheet->getCell('A1')->getValue();
+        $world = $sheet->getCell('B2')->getValue();
+
+        return new Response($canread && !$cannotread ? "$hello $world" : 'I should no be able to read this.');
+    }
+
     public function readAndSaveAction()
     {
         $filename = $this->container->getParameter('xls_fixture_absolute_path');
