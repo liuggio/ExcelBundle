@@ -25,7 +25,6 @@ matrix:
   fast_finishe: true
 
 before_install:
-  - wget http://cs.sensiolabs.org/get/php-cs-fixer.phar
   - composer self-update
   - if [[ "$SYMFONY_VERSION" != "" ]]; then composer require --no-update symfony/symfony:${SYMFONY_VERSION}; fi
 
@@ -33,5 +32,4 @@ install:
   - composer install --optimize-autoloader --prefer-source
 
 script:
-  - php php-cs-fixer.phar fix --dry-run --verbose --diff . || true;
   - bin/phpunit --verbose
