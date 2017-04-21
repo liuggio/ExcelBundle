@@ -2,6 +2,7 @@
 
 namespace Liuggio\ExcelBundle\Tests\Controller;
 
+use Liuggio\ExcelBundle\Tests\app\AppKernel;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -77,8 +78,6 @@ class FakeControllerTest extends WebTestCase
      */
     protected static function getKernelClass()
     {
-        require_once __DIR__.'/../app/AppKernel.php';
-
-        return 'Liuggio\ExcelBundle\Tests\app\AppKernel';
+        return AppKernel::class;
     }
 }
