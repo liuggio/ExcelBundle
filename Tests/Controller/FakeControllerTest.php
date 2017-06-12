@@ -2,6 +2,7 @@
 
 namespace Liuggio\ExcelBundle\Tests\Controller;
 
+use Liuggio\ExcelBundle\Tests\app\AppKernel;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -70,5 +71,13 @@ class FakeControllerTest extends WebTestCase
         $this->assertStringEndsWith('.xls', $content);
 
         $this->assertFileExists($content, sprintf('file %s should exist', $content));
+    }
+
+    /**
+     * @inheritdoc
+     */
+    protected static function getKernelClass()
+    {
+        return AppKernel::class;
     }
 }
