@@ -3,6 +3,7 @@
 namespace Liuggio\ExcelBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -20,6 +21,24 @@ class FakeControllerTest extends WebTestCase
 
         $this->assertEquals(Response::HTTP_OK, $client->getResponse()->getStatusCode(), $client->getResponse()->getContent());
         $this->assertStringStartsWith('attachment;filename=', $client->getResponse()->headers->get('content-disposition'));
+
+        $this->assertNotEmpty($content, 'Response should not be empty');
+        $this->assertNotNull($content, 'Response should not be null');
+    }
+
+    public function testFileAction()
+    {
+        $client = static::createClient();
+
+        $client->request(Request::METHOD_GET, '/fake/file');
+
+        /** @var BinaryFileResponse $response */
+        $response = $client->getResponse();
+        $response->sendContent();
+        $content = ob_get_contents();
+        ob_clean();
+
+        $this->assertEquals(Response::HTTP_OK, $response->getStatusCode(), $content);
 
         $this->assertNotEmpty($content, 'Response should not be empty');
         $this->assertNotNull($content, 'Response should not be null');

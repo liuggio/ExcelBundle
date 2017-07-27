@@ -4,6 +4,7 @@ namespace  Liuggio\ExcelBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 class FakeController extends Controller
 {
@@ -20,6 +21,21 @@ class FakeController extends Controller
         $response->headers->set('Content-Disposition', 'attachment;filename=stream-file.xls');
         $response->headers->set('Pragma', 'public');
         $response->headers->set('Cache-Control', 'maxage=1');
+
+        return $response;
+    }
+
+    public function fileAction()
+    {
+        // create an empty object
+        $phpExcelObject = $this->createXSLObject();
+
+        $phpExcelFactory = $this->get('phpexcel');
+        // create the writer
+        $writer = $phpExcelFactory->createWriter($phpExcelObject, 'Excel5');
+        $filename = 'xls-'.uniqid().'.xls';
+        // create the response
+        $response = $phpExcelFactory->createFileResponse($writer, $filename);
 
         return $response;
     }

@@ -1,3 +1,5 @@
 bin
 vendor
 Tests/app/cache
+.idea
+composer.lock
