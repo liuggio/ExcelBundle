@@ -2,6 +2,8 @@
 
 namespace Liuggio\ExcelBundle;
 
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 /**
@@ -85,6 +87,38 @@ class Factory
             $status,
             $headers
         );
+    }
+
+    /**
+     * Create a File Response
+     *
+     * @param \PHPExcel_Writer_IWriter $writer
+     * @param string                   $filename
+     * @param int                      $status
+     * @param array                    $headers
+     *
+     * @return BinaryFileResponse
+     */
+    public function createFileResponse(\PHPExcel_Writer_IWriter $writer, $filename, $status = 200, $headers = array())
+    {
+        $tempFilename = @tempnam(\PHPExcel_Shared_File::sys_get_temp_dir(), 'phpxlstmp');
+        $writer->save($tempFilename);
+
+        $response = new BinaryFileResponse(
+            $tempFilename,
+            $status,
+            $headers
+        );
+
+        $response->headers->set('Content-Type', 'text/vnd.ms-excel; charset=utf-8');
+        $response->headers->set('Pragma', 'public');
+        $dispositionHeader = $response->headers->makeDisposition(
+            ResponseHeaderBag::DISPOSITION_ATTACHMENT,
+            $filename
+        );
+        $response->headers->set('Content-Disposition', $dispositionHeader);
+
+        return $response;
     }
 
     /**
