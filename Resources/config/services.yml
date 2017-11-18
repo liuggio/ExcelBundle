@@ -4,3 +4,4 @@ parameters:
 services:
     phpexcel:
       class: '%phpexcel.class%'
+      public: true

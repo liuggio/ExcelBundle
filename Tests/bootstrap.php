@@ -8,3 +8,4 @@ if (!file_exists($file)) {
 $autoload = require_once $file;
 
 require_once __DIR__ . '/app/Controller/FakeController.php';
+require_once __DIR__ . '/app/AppKernel.php';
