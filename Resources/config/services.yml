@@ -10,5 +10,5 @@ services:
     # This is alias is for legacy support only and will/can be removed soon
     #
     phpexcel:
-        alias: Liuggio\ExcelBundle\Factory:
+        alias: Liuggio\ExcelBundle\Factory
         public: true
