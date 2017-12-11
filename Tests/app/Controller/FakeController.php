@@ -4,8 +4,6 @@ namespace  Liuggio\ExcelBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
-use Liuggio\ExcelBundle\Factory;
-
 
 class FakeController extends Controller
 {
@@ -14,9 +12,9 @@ class FakeController extends Controller
         // create an empty object
         $phpExcelObject = $this->createXSLObject();
         // create the writer
-        $writer = $this->get(Factory::class)->createWriter($phpExcelObject, 'Excel5');
+        $writer = $this->get('phpexcel')->createWriter($phpExcelObject, 'Excel5');
         // create the response
-        $response = $this->get(Factory::class)->createStreamedResponse($writer);
+        $response = $this->get('phpexcel')->createStreamedResponse($writer);
         // adding headers
         $response->headers->set('Content-Type', 'text/vnd.ms-excel; charset=utf-8');
         $response->headers->set('Content-Disposition', 'attachment;filename=stream-file.xls');
@@ -31,7 +29,7 @@ class FakeController extends Controller
         // create an empty object
         $phpExcelObject = $this->createXSLObject();
         // create the writer
-        $writer = $this->get(Factory::class)->createWriter($phpExcelObject, 'Excel5');
+        $writer = $this->get('phpexcel')->createWriter($phpExcelObject, 'Excel5');
         $filename = tempnam(sys_get_temp_dir(), 'xls-') . '.xls';
         // create filename
         $writer->save($filename);
@@ -44,7 +42,7 @@ class FakeController extends Controller
         $filename = $this->container->getParameter('xls_fixture_absolute_path');
         // load the factory
         /** @var \Liuggio\ExcelBundle\Factory $reader */
-        $factory = $this->get(Factory::class);
+        $factory = $this->get('phpexcel');
         // create a reader
         /** @var \PHPExcel_Reader_IReader $reader */
         $reader = $factory->createReader('Excel5');
@@ -70,7 +68,7 @@ class FakeController extends Controller
         // create an object from a filename
         $phpExcelObject = $this->createXSLObject($filename);
         // create the writer
-        $writer = $this->get(Factory::class)->createWriter($phpExcelObject, 'Excel5');
+        $writer = $this->get('phpexcel')->createWriter($phpExcelObject, 'Excel5');
         $filename = tempnam(sys_get_temp_dir(), 'xls-') . '.xls';
         // create filename
         $writer->save($filename);
@@ -84,9 +82,9 @@ class FakeController extends Controller
      */
     private function createXSLObject()
     {
-        $phpExcelObject = $this->get(Factory::class)->createPHPExcelObject();
+        $phpExcelObject = $this->get('phpexcel')->createPHPExcelObject();
 
-        $htmlHelper = $this->get(Factory::class)->createHelperHTML();
+        $htmlHelper = $this->get('phpexcel')->createHelperHTML();
 
         $phpExcelObject->getProperties()->setCreator("liuggio")
             ->setLastModifiedBy("Giulio De Donato")
