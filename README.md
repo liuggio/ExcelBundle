@@ -51,37 +51,37 @@ I encourage you to use the built-in function for csv: http://php.net/manual-look
 - Create an empty object:
 
 ``` php
-$phpExcelObject = $this->get('phpexcel')->createPHPExcelObject();
+$phpExcelObject = $this->get('Liuggio\ExcelBundle\Factory')->createPHPExcelObject();
 ```
 
 - Create an object from a file:
 
 ``` php
-$phpExcelObject = $this->get('phpexcel')->createPHPExcelObject('file.xls');
+$phpExcelObject = $this->get('Liuggio\ExcelBundle\Factoryl')->createPHPExcelObject('file.xls');
 ```
 
 - Create a Excel5 and write to a file given the object:
 
 ```php
-$writer = $this->get('phpexcel')->createWriter($phpExcelObject, 'Excel5');
+$writer = $this->get('Liuggio\ExcelBundle\Factory')->createWriter($phpExcelObject, 'Excel5');
 $writer->save('file.xls');
 ```
 
 - Create a Excel5 and create a StreamedResponse:
 
 ```php
-$writer = $this->get('phpexcel')->createWriter($phpExcelObject, 'Excel5');
-$response = $this->get('phpexcel')->createStreamedResponse($writer);
+$writer = $this->get('Liuggio\ExcelBundle\Factory')->createWriter($phpExcelObject, 'Excel5');
+$response = $this->get('Liuggio\ExcelBundle\Factory')->createStreamedResponse($writer);
 ```
 
 - Create a Excel file with an image:
 
 ```php
-$writer = $this->get('phpexcel')->createPHPExcelObject();
+$writer = $this->get('Liuggio\ExcelBundle\Factory')->createPHPExcelObject();
 $writer->setActiveSheetIndex(0);
 $activesheet = $writer->getActiveSheet();
 
-$drawingobject = $this->get('phpexcel')->createPHPExcelWorksheetDrawing();
+$drawingobject = $this->get('Liuggio\ExcelBundle\Factory')->createPHPExcelWorksheetDrawing();
 $drawingobject->setName('Image name');
 $drawingobject->setDescription('Image description');
 $drawingobject->setPath('/path/to/image');
@@ -90,6 +90,8 @@ $drawingobject->setOffsetY(20);
 $drawingobject->setCoordinates('A1');
 $drawingobject->setWorksheet($activesheet)
 ```
+
+_Note: it's recommended to inject factory instead of fetching it from container_
 
 ## Not Only 'Excel5'
 
@@ -103,6 +105,7 @@ The list of the types are:
 6.  'Gnumeric'
 7.  'HTML'
 8.  'CSV'
+
 
 ## Example
 
@@ -128,7 +131,8 @@ class DefaultController extends Controller
     public function indexAction($name)
     {
         // ask the service for a Excel5
-       $phpExcelObject = $this->get('phpexcel')->createPHPExcelObject();
+       $phpExcelObject = $this->get('Liuggio\ExcelBundle\Factory')->createPHPExcelObject();
+       // or inject it: $phpExcelObject = $injectedExcelFactory->createPHPExcelObject();
 
        $phpExcelObject->getProperties()->setCreator("liuggio")
            ->setLastModifiedBy("Giulio De Donato")
@@ -145,9 +149,9 @@ class DefaultController extends Controller
        $phpExcelObject->setActiveSheetIndex(0);
 
         // create the writer
-        $writer = $this->get('phpexcel')->createWriter($phpExcelObject, 'Excel5');
+        $writer = $this->get('Liuggio\ExcelBundle\Factory')->createWriter($phpExcelObject, 'Excel5');
         // create the response
-        $response = $this->get('phpexcel')->createStreamedResponse($writer);
+        $response = $this->get('Liuggio\ExcelBundle\Factory')->createStreamedResponse($writer);
         // adding headers
         $dispositionHeader = $response->headers->makeDisposition(
             ResponseHeaderBag::DISPOSITION_ATTACHMENT,
@@ -169,7 +173,7 @@ the [list of contributors](https://github.com/liuggio/ExcelBundle/graphs/contrib
 
 ## Contribute
 
-1. fork the project
-2. clone the repo
-3. get the coding standard fixer: `wget http://cs.sensiolabs.org/get/php-cs-fixer.phar`
-4. before the PullRequest you should run the coding standard fixer with `php php-cs-fixer.phar fix -v .`
+1. Fork the project
+1. Clone the repo
+1. Get the coding standard fixer: `wget http://cs.sensiolabs.org/get/php-cs-fixer.phar`
+1. Before the PullRequest you should run the coding standard fixer with `php php-cs-fixer.phar fix -v .`
