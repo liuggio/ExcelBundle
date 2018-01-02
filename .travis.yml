@@ -11,7 +11,6 @@ php:
   - 5.5
   - 5.6
   - 7.0
-  - 7.1
 
 matrix:
   include:
@@ -20,14 +19,21 @@ matrix:
     - php: 5.6
       env: SYMFONY_VERSION="2.8.*@dev symfony/phpunit-bridge:~2.7"
     - php: 5.6
-      env: SYMFONY_VERSION="3.0.*@dev"
+      env: SYMFONY_VERSION="3.*@dev"
     - php: 7.1
-      env: SYMFONY_VERSION="^4.0-BETA"
+      env: SYMFONY_VERSION="3.*@dev"
+    - php: 7.1
+      env: SYMFONY_VERSION="4.*@dev"
+    - php: 7.2
+      env: SYMFONY_VERSION="3.*@dev"
+    - php: 7.2
+      env: SYMFONY_VERSION="4.*@dev"
     - php: hhvm
       dist: trusty
   fast_finishe: true
 
 before_install:
+  - phpenv config-add travis.php.ini
   - composer self-update
   - if [[ "$SYMFONY_VERSION" != "" ]]; then composer require --no-update symfony/symfony:${SYMFONY_VERSION}; fi
 
