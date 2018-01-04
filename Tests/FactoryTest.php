@@ -26,7 +26,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
 
     public function testCreateStreamedResponse()
     {
-        $writer = $this->getMock('\PHPExcel_Writer_IWriter');
+        $writer = $this->getMockBuilder('\PHPExcel_Writer_IWriter')->getMock();
         $writer->expects($this->once())
             ->method('save')
             ->with('php://output');

@@ -2,5 +2,13 @@ parameters:
     phpexcel.class:  Liuggio\ExcelBundle\Factory
 
 services:
-    phpexcel:
+    Liuggio\ExcelBundle\Factory:
       class: '%phpexcel.class%'
+      public: true
+
+    #
+    # This is alias is for legacy support only and will/can be removed soon
+    #
+    phpexcel:
+        alias: Liuggio\ExcelBundle\Factory
+        public: true
