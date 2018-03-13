@@ -28,13 +28,17 @@
         "symfony/class-loader": "~2.6|~3.0",
         "symfony/validator": "~2.6|~3.0",
         "symfony/browser-kit": "~2.6|~3.0",
-        "sensio/framework-extra-bundle": "~2.3|~3.0"
+        "sensio/framework-extra-bundle": "~2.3|~3.0",
+        "symfony/var-dumper": "^4.0"
     },
     "autoload": {
         "exclude-from-classmap": ["/Tests/"],
         "psr-4": {
             "Liuggio\\ExcelBundle\\": ""
-        }
+        },
+        "classmap": [
+            "polyfill"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
