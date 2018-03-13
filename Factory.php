@@ -49,6 +49,7 @@ class Factory
      */
     public function createReader($type = 'Excel5')
     {
+        $type = $this->convertType($type);
         return call_user_func(array($this->phpExcelIO, 'createReader'), $type);
     }
 
@@ -64,6 +65,7 @@ class Factory
      */
     public function createWriter(\PHPExcel $phpExcelObject, $type = 'Excel5')
     {
+        $type = $this->convertType($type);
         return call_user_func(array($this->phpExcelIO, 'createWriter'), $phpExcelObject, $type);
     }
 
@@ -95,5 +97,46 @@ class Factory
     public function createHelperHTML()
     {
         return new \PHPExcel_Helper_HTML();
+    }
+
+    /**
+     * Documentation link: https://phpspreadsheet.readthedocs.io/en/develop/topics/migration-from-PHPExcel/#renamed-readers-and-writers
+     *
+     * @param string $type
+     *
+     * @return string
+     */
+    private function convertType($type)
+    {
+        switch ($type) {
+            case 'CSV':
+                return 'Csv';
+                break;
+            case 'Excel2003XML':
+                return 'Xml';
+                break;
+            case 'Excel2007':
+                return 'Xlsx';
+                break;
+            case 'Excel5':
+                return 'Xls';
+                break;
+            case 'HTML':
+                return 'Html';
+                break;
+            case 'OOCalc':
+            case 'OpenDocument':
+                return 'Ods';
+                break;
+            case 'PDF':
+                return 'Pdf';
+                break;
+            case 'SYLK':
+                return 'Slk';
+                break;
+            default:
+                return $type;
+                break;
+        }
     }
 }
