@@ -17,9 +17,9 @@
     "homepage": "http://www.welcometothebundle.com",
     "license": "MIT",
     "require": {
-        "php": ">=5.3.2",
+        "php": "^5.6|^7.0",
         "symfony/framework-bundle": "~2.6|~3.0",
-        "phpoffice/phpexcel": "~1.8.1"
+        "phpoffice/phpspreadsheet": "^1.2"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.6",
