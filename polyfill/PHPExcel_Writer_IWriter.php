@@ -1,5 +1,5 @@
 <?php
-trigger_error('\PHPExcel_Writer_IWriter is deprecated use \PhpOffice\PhpSpreadsheet\Writer\IWriter instead', E_DEPRECATED);
+@trigger_error('\PHPExcel_Writer_IWriter is deprecated use \PhpOffice\PhpSpreadsheet\Writer\IWriter instead', E_DEPRECATED);
 /**
  * Interface PHPExcel_Writer_IWriter
  *

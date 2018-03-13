@@ -1,5 +1,5 @@
 <?php
-trigger_error('\PHPExcel_Helper_HTML is deprecated use \PhpOffice\PhpSpreadsheet\Helper\Html instead', E_DEPRECATED);
+@trigger_error('\PHPExcel_Helper_HTML is deprecated use \PhpOffice\PhpSpreadsheet\Helper\Html instead', E_DEPRECATED);
 
 /**
  * Class PHPExcel_Helper_HTML

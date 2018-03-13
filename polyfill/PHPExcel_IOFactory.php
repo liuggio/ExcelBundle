@@ -1,5 +1,5 @@
 <?php
-trigger_error('\PHPExcel_IOFactory is deprecated use \PhpOffice\PhpSpreadsheet\IOFactory instead', E_DEPRECATED);
+@trigger_error('\PHPExcel_IOFactory is deprecated use \PhpOffice\PhpSpreadsheet\IOFactory instead', E_DEPRECATED);
 
 /**
  * Class PHPExcel_IOFactory
