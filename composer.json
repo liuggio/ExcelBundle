@@ -19,7 +19,7 @@
     "require": {
         "php": ">=5.3.2",
         "phpoffice/phpexcel": "~1.8.1"
-    }
+    },
     "autoload": {
         "exclude-from-classmap": ["/Tests/"],
         "psr-4": {
@@ -31,7 +31,6 @@
             "Liuggio\\ExcelBundle\\": ""
         }
     },
-    
     "extra": {
         "branch-alias": {
             "dev-master": "2.0.x-dev"
