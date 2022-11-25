@@ -1,5 +1,5 @@
 {
-    "name": "soft-passio/excel-bundle",
+    "name": "liuggio/excel-bundle",
     "description": "This is a Symfony2 Bundle helps you to read and write Excel files (including pdf, xlsx, odt), thanks to the PHPExcel library",
     "type": "symfony-bundle",
     "authors": [
